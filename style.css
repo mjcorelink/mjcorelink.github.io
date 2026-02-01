@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border: 3px solid #7c3aed; /* purple outline */
+  border-radius: 6px;
+}
+
+.header .text h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 800;
+  color: #222;
+}
+
+.header .text p {
+  margin-top: 8px;
+  font-style: italic;
+  color: #333;
+}
