@@ -6,15 +6,8 @@
 }
 
 body {
-    background-image: url('BG.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+    background-image: url('assets/BG.jpg');
+    /* ... rest of the code ... */
 }
 
 .container {
@@ -34,7 +27,6 @@ body {
     min-width: 300px;
 }
 
-<img src="assets/pfp.jpg" alt="Mark John Gonzalvo">
 
 
 .pfp-container img {
