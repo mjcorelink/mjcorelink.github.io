@@ -70,43 +70,23 @@ h1 {
 }
 
 .social-icons {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 25px; /* Spacing between the icons */
 }
 
 .social-icons a {
+    color: white; /* Clean white look */
+    font-size: 1.8rem; /* Size of the icons */
     text-decoration: none;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* Making it a circle */
-    width: 45px;
-    height: 45px;
-    background: white;
-    border-radius: 50%; /* This creates the circle shape */
-    
-    font-size: 1.4rem; /* Icon size inside the circle */
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 .social-icons a:hover {
-    transform: scale(1.1);
+    opacity: 0.7; /* Subtle fade when you hover */
+    transform: translateY(-3px); /* Small lift effect */
 }
-
-/* Official Brand Colors for the Icons */
-.icon-ig { color: #E4405F; }
-.icon-x  { color: #000000; }
-.icon-fb { color: #1877F2; }
-.icon-in { color: #0077B5; }
-
-/* Optional: If you want the circle to change color when you hover */
-.icon-ig:hover { background-color: #fce4e9; }
-.icon-x:hover  { background-color: #eeeeee; }
-.icon-fb:hover { background-color: #e7f0ff; }
-.icon-in:hover { background-color: #e6f2f9; }
 
 /* Right About Card */
 .about-side {
