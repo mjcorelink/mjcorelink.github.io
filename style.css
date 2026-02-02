@@ -6,10 +6,18 @@
 }
 
 body {
-    background-image: url('assets/BG.jpg');
-    /* ... rest of the code ... */
+    /* Changed to lowercase 'bg.jpg' to match your GitHub file name */
+    background-image: url('assets/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px;
 }
-
 .container {
     display: flex;
     width: 90%;
