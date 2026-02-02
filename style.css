@@ -76,18 +76,24 @@ h1 {
     gap: 25px; /* Spacing between the icons */
 }
 
-.social-icons a {
-    color: white; /* Clean white look */
-    font-size: 1.8rem; /* Size of the icons */
-    text-decoration: none;
+.social-icons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* This targets EVERY icon inside the social-icons div */
+.social-icons a i {
+    color: white !important; /* '!important' overrides the blue link default */
+    font-size: 1.8rem;
     transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
-.social-icons a:hover {
-    opacity: 0.7; /* Subtle fade when you hover */
-    transform: translateY(-3px); /* Small lift effect */
+.social-icons a:hover i {
+    opacity: 0.7;
+    transform: translateY(-3px);
 }
-
 /* Right About Card */
 .about-side {
     flex: 1.2;
