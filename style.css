@@ -21,58 +21,6 @@ body {
     overflow-x: hidden;
 }
 
-
-/* --- PFP LIGHTBOX (MODAL) --- */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 2000; /* Above everything else */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 80%;
-    border: 3px solid #00d4ff;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-    animation: zoomIn 0.3s ease;
-}
-
-/* Close Button */
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-modal:hover {
-    color: #00d4ff;
-}
-
-@keyframes zoomIn {
-    from {transform: scale(0.7); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
-}
-
-/* Change cursor to pointer on the pfp so people know they can click it */
-.pfp-container img {
-    cursor: pointer;
-}
-
-
 /* --- SPACE ANIMATION OVERLAY --- */
 .space-overlay {
     position: fixed;
@@ -101,6 +49,7 @@ body {
     height: 2px;
     background: white;
     border-radius: 50%;
+    /* Stars spread across the viewport */
     box-shadow: 
         15vw 10vh 2px 1px #fff, 35vw 45vh 2px 1px #fff, 
         65vw 15vh 2px 1px #fff, 85vw 50vh 2px 1px #fff, 
@@ -153,8 +102,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 50px;
-    animation: floatUI 6s ease-in-out infinite;
     z-index: 10;
+    animation: floatUI 6s ease-in-out infinite;
 }
 
 @keyframes floatUI {
@@ -172,7 +121,7 @@ body {
     padding: 12px 18px;
     border-radius: 15px;
     font-size: 13px;
-    max-width: 250px;
+    max-width: 280px;
     margin-bottom: 20px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -206,6 +155,12 @@ body {
     border: 2px solid #00d4ff;
     object-fit: cover;
     box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.pfp-container img:hover {
+    transform: scale(1.05);
 }
 
 h1 {
@@ -217,10 +172,11 @@ h1 {
 .titles {
     margin: 10px 0;
     font-size: 1rem;
-    color: #00d4ff; /* Space Blue */
-    background: rgba(0, 0, 0, 0.3);
+    color: #00d4ff; 
+    background: rgba(0, 0, 0, 0.4);
     padding: 8px 15px;
     border-radius: 10px;
+    line-height: 1.4;
 }
 
 .email-btn {
@@ -241,7 +197,7 @@ h1 {
 }
 
 .social-icons {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     gap: 20px;
 }
@@ -252,63 +208,113 @@ h1 {
     transition: 0.3s;
 }
 
-.social-icons a:hover i { color: #00d4ff; transform: scale(1.2); }
+.social-icons a:hover i { 
+    color: #00d4ff; 
+    transform: scale(1.2); 
+}
 
 /* --- ABOUT CARD (GLASSMORPHISM) --- */
 .about-side { flex: 1.2; }
 
-/* --- UPDATED ABOUT CARD (GLASSMORPHISM + DEPTH) --- */
 .about-card {
-    /* We use a slightly darker semi-transparent background to fight the bright Earth bg */
-    background: rgba(0, 0, 0, 0.45); 
-    backdrop-filter: blur(20px);        /* Increased blur for better readability */
+    background: rgba(0, 0, 0, 0.45); /* Darker for better visibility */
+    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-    color: white; /* Ensures paragraph text is white */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
 .about-card h2 {
     font-size: 2.2rem;
     margin-bottom: 20px;
-    color: #00d4ff; /* Bright Cyan for the header */
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+    color: #00d4ff;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
     letter-spacing: 2px;
 }
 
 .about-card p {
-    font-size: 1.05rem;
     line-height: 1.8;
     margin-bottom: 30px;
-    color: #f0f0f0; /* Off-white is often easier to read than pure white */
-    font-weight: 400;
+    font-weight: 300;
+    color: #f0f0f0;
 }
 
-/* --- UPDATED BUTTONS FOR VISIBILITY --- */
+.button-group { display: flex; gap: 15px; }
+
 .card-btn {
     flex: 1;
     text-align: center;
     border: 1px solid #00d4ff;
-    color: #00d4ff;
-    background: rgba(0, 212, 255, 0.1); /* Slight tint inside buttons */
+    color: white;
     text-decoration: none;
     padding: 12px;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: bold;
-    transition: 0.3s ease;
+    transition: 0.3s;
+    background: rgba(0, 212, 255, 0.1);
 }
 
 .card-btn:hover {
     background: #00d4ff;
     color: black;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    box-shadow: 0 0 20px #00d4ff;
 }
 
-/* --- MOBILE --- */
+/* --- LIGHTBOX MODAL --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+
+.modal-content {
+    display: block;
+    max-width: 85%;
+    max-height: 85vh;
+    border: 3px solid #00d4ff;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.close-modal:hover {
+    color: #00d4ff;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 850px) {
-    .container { flex-direction: column; text-align: center; }
+    .container { 
+        flex-direction: column; 
+        text-align: center; 
+        padding-top: 50px;
+    }
     .about-card { padding: 30px 20px; }
+    .button-group { flex-direction: column; }
 }
