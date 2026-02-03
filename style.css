@@ -13,26 +13,26 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     
-    /* THE CRITICAL CENTERING FIX */
+    /* THE MAGIC CENTERING FIX */
     display: flex;
     justify-content: center; /* Horizontal Center */
     align-items: center;     /* Vertical Center */
-    min-height: 100vh;       /* Full Viewport Height */
+    min-height: 100vh;       /* Takes full height of screen */
     width: 100%;
     margin: 0;
     color: white;
     overflow-x: hidden;
 }
 
-/* This container now sits exactly in the middle of the body */
+/* COMBINED CONTAINER: Keeps everything in a neat box in the middle */
 .container {
     display: flex;
-    flex-direction: row;    /* Keeps Profile and About side-by-side */
+    flex-direction: row;
     width: 90%;
-    max-width: 1100px;      /* Prevents it from stretching too wide */
-    align-items: center;    /* Vertical alignment of the two sides */
-    justify-content: center;/* Horizontal alignment of the two sides */
-    gap: 40px;              /* Space between profile and about card */
+    max-width: 1100px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
     z-index: 10;
     animation: floatUI 6s ease-in-out infinite;
 }
@@ -40,21 +40,13 @@ body {
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 850px) {
     .container { 
-        flex-direction: column; /* Stacks Profile on top of About for mobile */
-        text-align: center;
-        gap: 20px;
+        flex-direction: column; 
+        text-align: center; 
+        gap: 30px;
+        padding: 40px 0;
     }
-}
-
-.container {
-    display: flex;
-    width: 100%;
-    max-width: 1150px;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    z-index: 10;
-    animation: floatUI 6s ease-in-out infinite;
+    .about-card { padding: 30px 20px; }
+    .button-group { flex-direction: column; }
 }
 
 /* --- SPACE ANIMATION OVERLAY --- */
@@ -323,15 +315,4 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     z-index: 10001;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 850px) {
-    .container { 
-        flex-direction: column; 
-        text-align: center; 
-        padding-top: 50px;
-    }
-    .about-card { padding: 30px 20px; }
-    .button-group { flex-direction: column; }
 }
