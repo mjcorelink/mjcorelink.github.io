@@ -49,19 +49,51 @@ body {
     z-index: 100;
     line-height: 1.4;
 }
+/* --- UPDATED SPEECH BUBBLE --- */
+.speech-bubble {
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    max-width: 280px;
+    /* Adjust this margin to move the bubble closer or further from your head */
+    margin-bottom: 15px; 
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: opacity 1s ease;
+    z-index: 100;
+    line-height: 1.4;
+}
 
-/* The bubble's tail pointing to your head */
+/* The bubble's tail pointing directly down to your head */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    /* This places the tail at the very bottom of the bubble */
+    bottom: -10px; 
+    /* This centers it horizontally */
     left: 50%;
     transform: translateX(-50%);
+    /* These borders create the triangle shape */
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+    /* This color should match the bubble's background (without the blur) */
     border-top: 10px solid rgba(255, 255, 255, 0.25);
 }
 
+/* Ensure the profile side centers everything so the tail lines up */
+.profile-side {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
 /* --- LEFT PROFILE SECTION --- */
 .profile-side {
     text-align: center;
