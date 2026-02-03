@@ -3,15 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-/* --- GLOBAL STYLES --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -26,79 +18,10 @@ body {
     min-height: 100vh;
     color: white;
     padding: 20px;
+    overflow-x: hidden;
 }
 
-
-/* Rest of your code like .space-overlay, .container, etc. follows below... */
-
-.container 
-    display: flex;
-    width: 100%;
-    max-width: 1100px;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    /* Added subtle floating motion to the whole UI */
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-/* --- SPACE ANIMATIONS (Meteors & Twinkle) --- */
-
-.glow-stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    /* These coordinates spread the stars out */
-    box-shadow: 
-        15vw 10vh 2px 1px #fff, 
-        35vw 45vh 2px 1px #fff, 
-        65vw 15vh 2px 1px #fff, 
-        85vw 50vh 2px 1px #fff, 
-        25vw 80vh 2px 1px #fff, 
-        75vw 85vh 2px 1px #fff,
-        50vw 30vh 2px 1px #fff;
-    opacity: 1;
-    animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { 
-        opacity: 0.4; 
-        transform: scale(1); 
-    }
-    50% { 
-        opacity: 1; 
-        transform: scale(1.5); 
-    }
-}
-
-@keyframes glowPulse {
-    0%, 100% { 
-        opacity: 0.3; 
-        transform: scale(1);
-        box-shadow: 
-            400px 200px 0px 2px rgba(255,255,255,0.3), 
-            800px 400px 0px 2px rgba(255,255,255,0.3);
-    }
-    50% { 
-        opacity: 1; 
-        transform: scale(1.2);
-        /* This creates the "bloom" or glowing aura */
-        box-shadow: 
-            400px 200px 10px 4px rgba(255,255,255,0.8), 
-            800px 400px 10px 4px rgba(255,255,255,0.8);
-    }
-}
+/* --- SPACE ANIMATION OVERLAY --- */
 .space-overlay {
     position: fixed;
     top: 0;
@@ -106,7 +29,6 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1; 
-    overflow: hidden;
     pointer-events: none; 
 }
 
@@ -117,8 +39,21 @@ body {
     width: 100%;
     height: 100%;
     background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-    opacity: 0.3;
-    animation: twinkleMove 100s linear infinite;
+    opacity: 0.2;
+    animation: twinkleMove 150s linear infinite;
+}
+
+.glow-stars {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        15vw 10vh 2px 1px #fff, 35vw 45vh 2px 1px #fff, 
+        65vw 15vh 2px 1px #fff, 85vw 50vh 2px 1px #fff, 
+        25vw 80vh 2px 1px #fff, 75vw 85vh 2px 1px #fff;
+    animation: glowPulse 4s ease-in-out infinite;
 }
 
 @keyframes twinkleMove {
@@ -126,176 +61,196 @@ body {
     to { background-position: -10000px 5000px; }
 }
 
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* --- METEORS --- */
 [class^="meteor-"] {
     position: absolute;
     width: 2px;
     height: 2px;
     background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px white;
     opacity: 0;
 }
 
 [class^="meteor-"]::after {
     content: '';
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     width: 80px;
     height: 1px;
     background: linear-gradient(90deg, white, transparent);
 }
 
-.meteor-1 {
-    top: -10%;
-    right: 20%;
-    animation: shootingStar 7s ease-in infinite;
-    animation-delay: 2s;
-}
-
-.meteor-2 {
-    top: 10%;
-    right: -10%;
-    animation: shootingStar 12s ease-in infinite;
-    animation-delay: 8s;
-}
+.meteor-1 { top: 10%; right: 10%; animation: shootingStar 8s linear infinite; }
+.meteor-2 { top: 30%; right: -10%; animation: shootingStar 12s linear infinite; animation-delay: 4s; }
 
 @keyframes shootingStar {
     0% { transform: rotate(315deg) translateX(0); opacity: 0; }
     10% { opacity: 1; }
-    20% { transform: rotate(315deg) translateX(-1000px); opacity: 0; }
-    100% { transform: rotate(315deg) translateX(-1000px); opacity: 0; }
+    30% { transform: rotate(315deg) translateX(-1000px); opacity: 0; }
+    100% { opacity: 0; }
 }
 
-/* --- SPEECH BUBBLE (MJ Speaking) --- */
+/* --- MAIN LAYOUT --- */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1150px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    animation: floatUI 6s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes floatUI {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- SPEECH BUBBLE --- */
 .speech-bubble {
     position: relative;
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.15); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 14px;
-    max-width: 280px;
-    margin-bottom: 15px; /* Perfect gap for the tail to touch the head */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 13px;
+    max-width: 250px;
+    margin-bottom: 20px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     transition: opacity 1s ease;
-    z-index: 100;
-    line-height: 1.4;
 }
 
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -10px; 
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid rgba(255, 255, 255, 0.25);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid rgba(255, 255, 255, 0.2);
 }
 
-/* --- LEFT PROFILE SECTION --- */
+/* --- PROFILE SIDE --- */
 .profile-side {
     text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
 .pfp-container img {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    border: 4px solid white;
+    border: 2px solid #00d4ff;
     object-fit: cover;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
 }
 
 h1 {
-    margin-top: 15px;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0px rgba(0, 0, 0, 1), 1px -1px 0px rgba(0, 0, 0, 1), -1px 1px 0px rgba(0, 0, 0, 1), 1px 1px 0px rgba(0, 0, 0, 1);
-    letter-spacing: 1px;
+    margin-top: 20px;
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 .titles {
-    margin: 15px 0;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #f0f0f0;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-    background: rgba(0, 0, 0, 0.4); 
-    padding: 10px 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #00d4ff; /* Space Blue */
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 10px;
 }
 
 .email-btn {
-    display: inline-block;
-    background: black;
-    color: white;
     text-decoration: none;
-    padding: 12px 40px;
-    margin: 20px 0;
-    border: 1px solid white;
+    color: #00d4ff;
+    border: 1px solid #00d4ff;
+    padding: 10px 30px;
+    border-radius: 25px;
+    background: rgba(0, 212, 255, 0.05);
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.email-btn:hover {
+    background: #00d4ff;
+    color: black;
+    box-shadow: 0 0 20px #00d4ff;
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a i {
+    color: white;
+    font-size: 1.5rem;
     transition: 0.3s;
 }
 
-.email-btn:hover { background: white; color: black; }
+.social-icons a:hover i { color: #00d4ff; transform: scale(1.2); }
 
-.social-icons { margin-top: 25px; display: flex; justify-content: center; gap: 25px; }
-
-.social-icons a i {
-    color: white !important;
-    font-size: 1.8rem;
-    transition: transform 0.2s ease, opacity 0.3s ease;
-}
-
-.social-icons a:hover i { opacity: 0.7; transform: translateY(-3px); }
-
-/* --- RIGHT ABOUT CARD --- */
+/* --- ABOUT CARD (GLASSMORPHISM) --- */
 .about-side { flex: 1.2; }
 
 .about-card {
-    background: white;
-    color: black;
-    padding: 60px 40px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
-.about-card h2 { font-size: 2.8rem; margin-bottom: 25px; font-family: 'Courier New', Courier, monospace; }
+.about-card h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #00d4ff;
+    letter-spacing: 2px;
+}
 
-.about-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 40px; }
+.about-card p {
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
 
-.button-group { display: flex; gap: 20px; }
+.button-group { display: flex; gap: 15px; }
 
 .card-btn {
     flex: 1;
-    background: black;
+    text-align: center;
+    border: 1px solid white;
     color: white;
     text-decoration: none;
-    padding: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
+    padding: 12px;
+    border-radius: 5px;
     font-size: 0.8rem;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-.card-btn:hover { background: #333; }
+.card-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 15px white;
+}
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* --- MOBILE --- */
 @media (max-width: 850px) {
-    .container { flex-direction: column; gap: 40px; text-align: center; animation: none; /* Disable float on mobile to save battery */ }
-    .speech-bubble { max-width: 90%; }
+    .container { flex-direction: column; text-align: center; }
+    .about-card { padding: 30px 20px; }
 }
