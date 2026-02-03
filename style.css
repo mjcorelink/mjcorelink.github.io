@@ -32,6 +32,34 @@ body {
     gap: 60px;
 }
 
+
+.speech-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.9); /* Glass effect */
+    color: #333;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    max-width: 250px;
+    line-height: 1.4;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border: 1px solid white;
+    transition: opacity 1s ease-out; /* Smooth fade out */
+    z-index: 10;
+}
+
+/* The bubble's tail */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent;
+}
 /* Left Profile Section */
 .profile-side {
     text-align: center;
