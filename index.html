@@ -5,48 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark John Gonzalvo | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 <body>
     <div class="container">
         <section class="profile-side">
+            <div id="welcome-bubble" class="speech-bubble">
+                Hi, MJ here! Welcome to my space site. Check out my AI assistant in the bottom corner if you have questions!
+            </div>
+
             <div class="pfp-container">
+                <img src="assets/bg.jpg" alt="Mark John Gonzalvo"> </div>
 
-<div class="profile-side">
-    <div id="welcome-bubble" class="speech-bubble">
-        Hi, MJ here! Welcome to my space site. Check out my AI assistant in the bottom corner if you have questions!
-    </div>
-
-    <div class="pfp-container">
-        <img src="assets/your-photo.jpg" alt="Mark John Gonzalvo">
-    </div>
-
-    <h1>Mark John Gonzalvo</h1>
-    ...
-</div>
-                
+            <h1>Mark John Gonzalvo</h1>
             <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support</p>
-            
+
             <a href="mailto:your@email.com" class="email-btn">Email me</a>
 
- <div class="social-icons">
-    <a href="YOUR_LINK"><i class="fab fa-instagram"></i></a>
-    <a href="YOUR_LINK"><i class="fab fa-x-twitter"></i></a> 
-    <a href="YOUR_LINK"><i class="fab fa-facebook-f"></i></a>
-    <a href="YOUR_LINK"><i class="fab fa-linkedin-in"></i></a>
-</div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a> 
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </section>
 
         <section class="about-side">
             <div class="about-card">
                 <h2>ABOUT ME</h2>
                 <p>
-
                     I’ve spent years in customer service and tech support, helping 
                     people through chat, calls, and emails. I also do content moderation, 
                     data tasks, and AI projects. I’m adaptable, efficient, and keep everything 
                     organized, even when things get busy.
-
-                    
                 </p>
                 <div class="button-group">
                     <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
@@ -58,32 +49,28 @@
 
     <script>
       window.chatbaseConfig = {
-        chatbotId: "aWn99QuaimyS0A8WuIJVn", // Use your actual ID here
+        chatbotId: "aWn99QuaimyS0A8WuIJVn",
         showFloatingInitialMessages: true, 
         floatingInitialMessagesDelay: 3, 
       };
     </script>
 
     <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="aWn99QuaimyS0A8WuIJVn";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="aWn99QuaimyS0A8WuIJVn";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 
-  <script>
-    // Wait for the page to load
-    window.addEventListener('load', function() {
-        const bubble = document.getElementById('welcome-bubble');
-        if (bubble) {
-            // Wait 30 seconds, then fade out
-            setTimeout(() => {
-                bubble.style.opacity = '0';
-                // Remove from layout after fade finishes
+    <script>
+        window.addEventListener('load', function() {
+            const bubble = document.getElementById('welcome-bubble');
+            if (bubble) {
                 setTimeout(() => {
-                    bubble.style.display = 'none';
-                }, 1000); 
-            }, 30000); 
-        }
-    });
-</script>
-    
+                    bubble.style.opacity = '0';
+                    setTimeout(() => {
+                        bubble.style.display = 'none';
+                    }, 1000); 
+                }, 30000); 
+            }
+        });
+    </script>
 </body>
 </html>
