@@ -10,6 +10,11 @@
     <div class="container">
         <section class="profile-side">
             <div class="pfp-container">
+
+<div id="welcome-bubble" class="speech-bubble">
+    Hi, MJ here! Welcome to my space site. Check out my AI assistant in the bottom corner if you have questions!
+</div>
+                
 <img src="assets/pfp.jpg" alt="Mark John Gonzalvo">            </div>
             <h1>Mark John Gonzalvo</h1>
             <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support</p>
@@ -54,6 +59,21 @@
 
     <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="aWn99QuaimyS0A8WuIJVn";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+    <script>
+    window.onload = function() {
+        const bubble = document.getElementById('welcome-bubble');
+        
+        // Hide the bubble after 30 seconds
+        setTimeout(() => {
+            bubble.style.opacity = '0';
+            // Completely remove it after the fade animation finishes
+            setTimeout(() => {
+                bubble.style.display = 'none';
+            }, 1000); 
+        }, 30000); 
+    };
 </script>
 
 </body>
