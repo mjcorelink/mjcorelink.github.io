@@ -6,6 +6,14 @@
     font-family: 'Arial', sans-serif;
 }
 
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
     background-image: url('assets/bg.jpg'); 
     background-size: cover;
@@ -19,6 +27,20 @@ body {
     color: white;
     padding: 20px;
 }
+
+/* PASTE IT HERE */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* I upped this to 40% to make stars pop more */
+    z-index: -2; 
+}
+
+/* Rest of your code like .space-overlay, .container, etc. follows below... */
 
 .container {
     display: flex;
@@ -38,6 +60,42 @@ body {
 }
 
 /* --- SPACE ANIMATIONS (Meteors & Twinkle) --- */
+
+/* --- BRIGHT GLOWING STARS --- */
+.glow-stars {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    /* We create multiple stars using box-shadows at different coordinates */
+    box-shadow: 
+        400px 200px #fff, 
+        800px 400px #fff, 
+        1200px 100px #fff, 
+        200px 600px #fff, 
+        1500px 700px #fff, 
+        1000px 900px #fff;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1);
+        box-shadow: 
+            400px 200px 0px 2px rgba(255,255,255,0.3), 
+            800px 400px 0px 2px rgba(255,255,255,0.3);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.2);
+        /* This creates the "bloom" or glowing aura */
+        box-shadow: 
+            400px 200px 10px 4px rgba(255,255,255,0.8), 
+            800px 400px 10px 4px rgba(255,255,255,0.8);
+    }
+}
 .space-overlay {
     position: fixed;
     top: 0;
