@@ -6,35 +6,35 @@
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* --- UPDATED GLOBAL STYLES --- */
 body {
     background-image: url('assets/bg.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
-    /* THE MAGIC CENTERING FIX */
-    display: flex;
-    justify-content: center; /* Horizontal Center */
-    align-items: center;     /* Vertical Center */
-    min-height: 100vh;       /* Takes full height of screen */
-    width: 100%;
     margin: 0;
     color: white;
+    /* CHANGE THESE: */
+    display: block;    /* Changed from flex to block so pages stack */
+    overflow-y: auto;  /* Allows you to scroll down */
     overflow-x: hidden;
 }
 
-/* COMBINED CONTAINER: Keeps everything in a neat box in the middle */
+/* Updated container to handle full-page sections */
 .container {
+    min-height: 100vh; /* Each section takes full screen height */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    width: 90%;
-    max-width: 1100px;
-    align-items: center;
     justify-content: center;
-    gap: 50px;
+    align-items: center;
+    gap: 60px;
+    padding: 50px 20px;
     z-index: 10;
-    animation: floatUI 6s ease-in-out infinite;
+    position: relative;
+}
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
