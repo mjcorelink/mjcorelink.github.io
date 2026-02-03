@@ -40,13 +40,7 @@ body {
     /* Remove the float animation if it's causing overlapping issues */
 }
 
-.page-two {
-    min-height: 100vh; /* Forces Page 2 to be its own full screen below Page 1 */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.4); 
+
 }
 
 /* --- SPACE ANIMATION OVERLAY --- */
@@ -347,89 +341,3 @@ h1 {
     .button-group { flex-direction: column; }
 }
 
-/* --- PAGE 2 LAYOUT --- */
-.page-two {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background: rgba(0, 0, 0, 0.3); /* Slightly darker transition */
-}
-
-.gallery-layout {
-    display: flex;
-    width: 100%;
-    max-width: 1100px;
-    align-items: center;
-    justify-content: center;
-    gap: 80px; /* Space between phone and text box */
-}
-
-/* --- THE PHONE MOCKUP --- */
-.phone-mockup {
-    position: relative;
-    width: 300px; /* Standard phone width */
-    height: 600px;
-    flex-shrink: 0;
-    animation: phoneFloat 5s ease-in-out infinite;
-}
-
-/* Use your phone frame image as the base */
-.phone-frame-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 2;
-    position: relative;
-    pointer-events: none;
-}
-
-/* The actual screen area inside the frame */
-.phone-screen-content {
-    position: absolute;
-    top: 2%;
-    left: 5%;
-    width: 90%;
-    height: 96%;
-    background: #000;
-    border-radius: 35px;
-    overflow: hidden;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.temp-text {
-    color: #00d4ff;
-    font-size: 12px;
-    text-align: center;
-    opacity: 0.6;
-}
-
-/* --- GALLERY INFO BOX --- */
-.gallery-info {
-    flex: 1;
-    max-width: 500px;
-}
-
-/* Custom Animation for Page 2 */
-@keyframes phoneFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(1deg); }
-}
-
-/* Mobile Responsive adjustment for Page 2 */
-@media (max-width: 900px) {
-    .gallery-layout {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .phone-mockup {
-        width: 260px;
-        height: 520px;
-    }
-}
