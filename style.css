@@ -20,172 +20,6 @@ body {
     padding: 20px;
 }
 
-/* Container for all space animations */
-.space-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Behind your content */
-    overflow: hidden;
-    pointer-events: none; /* Allows clicks to pass through to buttons */
-}
-
-/* --- TWINKLING EFFECT --- */
-.stars-twinkle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-    opacity: 0.3;
-    animation: twinkleMove 100s linear infinite;
-}
-
-@keyframes twinkleMove {
-    from { background-position: 0 0; }
-    to { background-position: -10000px 5000px; }
-}
-
-/* --- METEOR (Shooting Star) EFFECT --- */
-[class^="meteor-"] {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px white;
-    opacity: 0;
-}
-
-/* The tail of the meteor */
-[class^="meteor-"]::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(90deg, white, transparent);
-}
-
-.meteor-1 {
-    top: -10%;
-    right: 20%;
-    animation: shootingStar 7s ease-in infinite;
-    animation-delay: 2s;
-}
-
-.meteor-2 {
-    top: 10%;
-    right: -10%;
-    animation: shootingStar 12s ease-in infinite;
-    animation-delay: 8s;
-}
-
-@keyframes shootingStar {
-    0% {
-        transform: rotate(315deg) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    20% {
-        transform: rotate(315deg) translateX(-1000px);
-        opacity: 0;
-    }
-    100% {
-        transform: rotate(315deg) translateX(-1000px);
-        opacity: 0;
-    }
-}
-
-/* Container for all space animations */
-.space-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Behind your content */
-    overflow: hidden;
-    pointer-events: none; /* Allows clicks to pass through to buttons */
-}
-
-/* --- TWINKLING EFFECT --- */
-.stars-twinkle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-    opacity: 0.3;
-    animation: twinkleMove 100s linear infinite;
-}
-
-@keyframes twinkleMove {
-    from { background-position: 0 0; }
-    to { background-position: -10000px 5000px; }
-}
-
-/* --- METEOR (Shooting Star) EFFECT --- */
-[class^="meteor-"] {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 2px white;
-    opacity: 0;
-}
-
-/* The tail of the meteor */
-[class^="meteor-"]::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(90deg, white, transparent);
-}
-
-.meteor-1 {
-    top: -10%;
-    right: 20%;
-    animation: shootingStar 7s ease-in infinite;
-    animation-delay: 2s;
-}
-
-.meteor-2 {
-    top: 10%;
-    right: -10%;
-    animation: shootingStar 12s ease-in infinite;
-    animation-delay: 8s;
-}
-
-@keyframes shootingStar {
-    0% {
-        transform: rotate(315deg) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    20% {
-        transform: rotate(315deg) translateX(-1000px);
-        opacity: 0;
-    }
-    100% {
-        transform: rotate(315deg) translateX(-1000px);
-        opacity: 0;
-    }
-}
-
 .container {
     display: flex;
     width: 100%;
@@ -193,29 +27,86 @@ body {
     align-items: center;
     justify-content: center;
     gap: 60px;
+    /* Added subtle floating motion to the whole UI */
+    animation: float 6s ease-in-out infinite;
 }
 
-/* --- SPEECH BUBBLE (The Cloud) --- */
-.speech-bubble {
-    position: relative;
-    display: inline-block;             /* Keeps bubble size wrapped to text */
-    background: rgba(255, 255, 255, 0.15); /* Glass effect */
-    backdrop-filter: blur(12px);       /* Blurs stars behind the cloud */
-    -webkit-backdrop-filter: blur(12px);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 14px;
-    max-width: 280px;
-    margin-bottom: 25px;               /* Space between bubble and photo */
-    text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    transition: opacity 1s ease;       /* Smooth fade for the 30s timer */
-    z-index: 100;
-    line-height: 1.4;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
-/* --- UPDATED SPEECH BUBBLE --- */
+
+/* --- SPACE ANIMATIONS (Meteors & Twinkle) --- */
+.space-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden;
+    pointer-events: none; 
+}
+
+.stars-twinkle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    opacity: 0.3;
+    animation: twinkleMove 100s linear infinite;
+}
+
+@keyframes twinkleMove {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+[class^="meteor-"] {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px white;
+    opacity: 0;
+}
+
+[class^="meteor-"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, white, transparent);
+}
+
+.meteor-1 {
+    top: -10%;
+    right: 20%;
+    animation: shootingStar 7s ease-in infinite;
+    animation-delay: 2s;
+}
+
+.meteor-2 {
+    top: 10%;
+    right: -10%;
+    animation: shootingStar 12s ease-in infinite;
+    animation-delay: 8s;
+}
+
+@keyframes shootingStar {
+    0% { transform: rotate(315deg) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    20% { transform: rotate(315deg) translateX(-1000px); opacity: 0; }
+    100% { transform: rotate(315deg) translateX(-1000px); opacity: 0; }
+}
+
+/* --- SPEECH BUBBLE (MJ Speaking) --- */
 .speech-bubble {
     position: relative;
     display: inline-block;
@@ -228,8 +119,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 14px;
     max-width: 280px;
-    /* Adjust this margin to move the bubble closer or further from your head */
-    margin-bottom: 15px; 
+    margin-bottom: 15px; /* Perfect gap for the tail to touch the head */
     text-align: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transition: opacity 1s ease;
@@ -237,36 +127,24 @@ body {
     line-height: 1.4;
 }
 
-/* The bubble's tail pointing directly down to your head */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    /* This places the tail at the very bottom of the bubble */
     bottom: -10px; 
-    /* This centers it horizontally */
     left: 50%;
     transform: translateX(-50%);
-    /* These borders create the triangle shape */
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    /* This color should match the bubble's background (without the blur) */
     border-top: 10px solid rgba(255, 255, 255, 0.25);
 }
 
-/* Ensure the profile side centers everything so the tail lines up */
-.profile-side {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
 /* --- LEFT PROFILE SECTION --- */
 .profile-side {
     text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;               /* Centers bubble and photo vertically */
+    align-items: center; 
 }
 
 .pfp-container img {
@@ -283,12 +161,7 @@ h1 {
     font-size: 2.5rem;
     font-weight: 800;
     color: #ffffff;
-    text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.8), 
-        -1px -1px 0px rgba(0, 0, 0, 1),  
-         1px -1px 0px rgba(0, 0, 0, 1),
-        -1px  1px 0px rgba(0, 0, 0, 1),
-         1px  1px 0px rgba(0, 0, 0, 1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0px rgba(0, 0, 0, 1), 1px -1px 0px rgba(0, 0, 0, 1), -1px 1px 0px rgba(0, 0, 0, 1), 1px 1px 0px rgba(0, 0, 0, 1);
     letter-spacing: 1px;
 }
 
@@ -316,17 +189,9 @@ h1 {
     transition: 0.3s;
 }
 
-.email-btn:hover {
-    background: white;
-    color: black;
-}
+.email-btn:hover { background: white; color: black; }
 
-.social-icons {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
+.social-icons { margin-top: 25px; display: flex; justify-content: center; gap: 25px; }
 
 .social-icons a i {
     color: white !important;
@@ -334,15 +199,10 @@ h1 {
     transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
-.social-icons a:hover i {
-    opacity: 0.7;
-    transform: translateY(-3px);
-}
+.social-icons a:hover i { opacity: 0.7; transform: translateY(-3px); }
 
 /* --- RIGHT ABOUT CARD --- */
-.about-side {
-    flex: 1.2;
-}
+.about-side { flex: 1.2; }
 
 .about-card {
     background: white;
@@ -353,22 +213,11 @@ h1 {
     border-radius: 5px;
 }
 
-.about-card h2 {
-    font-size: 2.8rem;
-    margin-bottom: 25px;
-    font-family: 'Courier New', Courier, monospace;
-}
+.about-card h2 { font-size: 2.8rem; margin-bottom: 25px; font-family: 'Courier New', Courier, monospace; }
 
-.about-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
+.about-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 40px; }
 
-.button-group {
-    display: flex;
-    gap: 20px;
-}
+.button-group { display: flex; gap: 20px; }
 
 .card-btn {
     flex: 1;
@@ -382,19 +231,10 @@ h1 {
     transition: 0.3s;
 }
 
-.card-btn:hover {
-    background: #333;
-}
+.card-btn:hover { background: #333; }
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 850px) {
-    .container {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
-    }
-    
-    .speech-bubble {
-        max-width: 90%; /* Better for mobile screens */
-    }
+    .container { flex-direction: column; gap: 40px; text-align: center; animation: none; /* Disable float on mobile to save battery */ }
+    .speech-bubble { max-width: 90%; }
 }
