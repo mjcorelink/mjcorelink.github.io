@@ -61,20 +61,22 @@
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="aWn99QuaimyS0A8WuIJVn";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 
-    <script>
-    window.onload = function() {
+  <script>
+    // Wait for the page to load
+    window.addEventListener('load', function() {
         const bubble = document.getElementById('welcome-bubble');
-        
-        // Hide the bubble after 30 seconds
-        setTimeout(() => {
-            bubble.style.opacity = '0';
-            // Completely remove it after the fade animation finishes
+        if (bubble) {
+            // Wait 30 seconds, then fade out
             setTimeout(() => {
-                bubble.style.display = 'none';
-            }, 1000); 
-        }, 30000); 
-    };
+                bubble.style.opacity = '0';
+                // Remove from layout after fade finishes
+                setTimeout(() => {
+                    bubble.style.display = 'none';
+                }, 1000); 
+            }, 30000); 
+        }
+    });
 </script>
-
+    
 </body>
 </html>
