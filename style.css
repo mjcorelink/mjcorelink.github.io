@@ -316,3 +316,64 @@ h1 {
     cursor: pointer;
     z-index: 10001;
 }
+
+/* --- FINAL MOBILE RESPONSIVENESS FIX --- */
+@media (max-width: 850px) {
+    /* 1. Stack containers vertically */
+    .container {
+        flex-direction: column; 
+        padding: 80px 20px; /* Gives more room at the top and bottom */
+        height: auto;
+        min-height: 100vh;
+        gap: 40px;
+    }
+
+    /* 2. Fix the Profile Side for mobile */
+    .profile-side {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* 3. Scale down the PFP so it doesn't take too much space */
+    .pfp-container img {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* 4. Ensure the Glass Cards take full width */
+    .about-side, .gallery-text, .gallery-box {
+        width: 100%;
+        flex: none;
+    }
+
+    .about-card {
+        padding: 25px;
+        width: 100%;
+    }
+
+    /* 5. Adjust Typography for smaller screens */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    .sample-p {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    /* 6. Fix Button Alignment */
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card-btn {
+        width: 100%;
+    }
+}
