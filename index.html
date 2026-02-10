@@ -1,7 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJ Verse</title>
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
 <div class="container">
     <section class="profile-side">
-        <div class="speech-bubble">Hi, MJ here! Welcome to my space site...</div>
-        <div class="pfp-container"><img src="assets/pfp.jpg"></div>
+        <div class="speech-bubble">
+            Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!
+        </div>
+        
+        <div class="pfp-container">
+            <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
+        </div>
+        
         <h1 class="glow-text">Mark John Gonzalvo</h1>
         
         <div class="titles-container">
@@ -11,7 +27,7 @@
             <div class="titles-box">Freelancer</div>
         </div>
 
-        <a href="mailto:your@email.com" class="card-btn" style="background:#00d4ff; color:black;">Email me</a>
+        <a href="mailto:your@email.com" class="email-btn">Email me</a>
 
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -22,9 +38,14 @@
 
     <section class="about-side">
         <div class="about-card">
-            <h2 style="color:#00d4ff; margin-bottom:15px;">PROFILE SUMMARY</h2>
-            <p>I’ve spent years in customer service and tech support...</p>
-            <div style="display:flex; gap:15px;">
+            <h2>PROFILE SUMMARY</h2>
+            <p>
+                I’ve spent years in customer service and tech support, helping people 
+                through chat, calls, and emails. I also do content moderation, data tasks, 
+                and AI projects. I’m adaptable, efficient, and keep everything organized, 
+                even when things get busy.
+            </p>
+            <div class="button-group">
                 <a href="assets/Resume.pdf" target="_blank" class="card-btn">Resume</a>
                 <a href="#" class="card-btn" id="openPortfolio">Portfolio</a>
             </div>
@@ -33,14 +54,14 @@
 </div>
 
 <div id="portfolio-modal" class="modal">
-    <div class="album-wrapper">
-        <span id="close-portfolio" style="align-self:flex-end; cursor:pointer; font-size:30px; margin-bottom:10px;">&times;</span>
+    <div class="modal-content">
+        <span id="close-portfolio" style="align-self: flex-end; cursor: pointer; font-size: 40px; margin-bottom: 10px;">&times;</span>
         <img id="album-img" src="">
         <div class="album-footer">
             <p id="album-text"></p>
         </div>
-        <div class="nav-controls">
-            <button id="prevBtn" class="card-btn">Prev</button>
+        <div style="margin-top: 20px; display: flex; gap: 20px;">
+            <button id="prevBtn" class="card-btn">Previous</button>
             <button id="nextBtn" class="card-btn">Next</button>
         </div>
     </div>
@@ -70,3 +91,6 @@
     document.getElementById("prevBtn").onclick = () => { currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length; updateView(); };
     document.getElementById("close-portfolio").onclick = () => modal.style.display = "none";
 </script>
+
+</body>
+</html>
