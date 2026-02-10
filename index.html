@@ -71,6 +71,8 @@
         <img class="modal-content" id="img-expanded">
     </div>
 
+    
+
     <script>
       window.chatbaseConfig = {
         chatbotId: "aWn99QuaimyS0A8WuIJVn",
@@ -106,6 +108,67 @@
         }
         if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
         window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+    </script>
+
+    
+
+    <div id="portfolio-modal" class="portfolio-modal">
+    <div class="portfolio-content">
+        <span class="close-portfolio" onclick="closePortfolio()">&times;</span>
+        
+        <div class="frame-container">
+            <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+            
+            <div class="slide-wrapper">
+                <img id="portfolio-img" src="assets/cert1.jpg" alt="Certificate">
+                <div class="cert-description">
+                    <p id="cert-text">Certification 1</p>
+                </div>
+            </div>
+
+            <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+</div>
+    
+<script>
+        let currentSlide = 0;
+        const certs = [
+            { src: 'assets/cert1.jpg', desc: 'Customer Service Excellence' },
+            { src: 'assets/cert2.jpg', desc: 'Content Moderation Specialist' },
+            { src: 'assets/cert3.jpg', desc: 'Administrative Support Pro' }
+        ];
+
+        function openPortfolio() {
+            document.getElementById("portfolio-modal").style.display = "flex";
+            updateSlide();
+        }
+
+        function closePortfolio() {
+            document.getElementById("portfolio-modal").style.display = "none";
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= certs.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = certs.length - 1;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const imgElement = document.getElementById("portfolio-img");
+            const textElement = document.getElementById("cert-text");
+            
+            imgElement.src = certs[currentSlide].src;
+            textElement.innerText = certs[currentSlide].desc;
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("portfolio-modal");
+            if (event.target == modal) {
+                closePortfolio();
+            }
+        }
     </script>
 </body>
 </html>
