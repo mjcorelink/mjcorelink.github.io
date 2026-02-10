@@ -1,110 +1,104 @@
-/* --- PORTFOLIO MODAL OVERLAY --- */
-.portfolio-modal {
-    display: none; 
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0; 
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+/* --- GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    background: #050505 url('assets/bg.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    color: white;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease; /* Smooth fade in */
+    gap: 40px;
+    padding: 20px;
 }
 
-/* --- THE GLOWING FRAME --- */
-.portfolio-content {
-    position: relative;
-    width: 95%; /* Slightly wider for better mobile fit */
-    max-width: 800px; /* Slightly larger for high-res certificates */
-    animation: zoomIn 0.3s ease; /* Pop-up animation */
+/* --- SPEECH BUBBLE --- */
+.speech-bubble {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: opacity 1s;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+/* --- PROFILE SIDE --- */
+.profile-side { text-align: center; flex: 1; }
+.pfp-container img {
+    width: 200px; height: 200px; border-radius: 50%;
+    border: 3px solid #00d4ff;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+    cursor: pointer;
+}
+
+.titles-cloud {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: #00d4ff;
+    display: inline-block;
+    margin-top: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.email-btn {
+    display: inline-block;
+    background: #00d4ff;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 0 15px #00d4ff;
+}
+
+/* --- ABOUT CARD --- */
+.about-side { flex: 1.2; }
+.about-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+}
+
+.card-btn {
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* --- PORTFOLIO MODAL --- */
+.portfolio-modal {
+    display: none; position: fixed; z-index: 9999;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+    justify-content: center; align-items: center;
 }
 
 .frame-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Keeps arrows on the sides */
-    background: #000;
-    border: 2px solid #00d4ff;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), 
-                inset 0 0 15px rgba(0, 212, 255, 0.2); /* Added inner glow */
+    background: #000; border: 2px solid #00d4ff;
+    border-radius: 15px; padding: 15px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+    display: flex; align-items: center;
 }
 
-.slide-wrapper {
-    text-align: center;
-    width: 100%;
-    overflow: hidden;
-}
+.slide-wrapper img { max-width: 100%; max-height: 60vh; border-radius: 5px; }
 
-.slide-wrapper img {
-    max-width: 100%;
-    max-height: 70vh; /* Increased slightly for better visibility */
-    border-radius: 5px;
-    display: block;
-    margin: 0 auto;
-    object-fit: contain; /* Prevents image stretching */
-}
-
-.cert-description {
-    margin-top: 15px;
-    padding: 10px;
-    color: #00d4ff;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-top: 1px solid rgba(0, 212, 255, 0.2);
-    min-height: 50px; /* Prevents frame jump if text is long */
-}
-
-/* --- NAV BUTTONS --- */
 .nav-btn {
-    background: rgba(0, 212, 255, 0.1); /* Added subtle background */
-    border: none;
-    color: #00d4ff;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 15px 10px;
-    border-radius: 10px;
-    z-index: 10;
+    background: none; border: none; color: #00d4ff;
+    font-size: 2.5rem; cursor: pointer; padding: 10px;
 }
 
-.nav-btn:hover {
-    background: rgba(0, 212, 255, 0.2);
-    color: white;
-    text-shadow: 0 0 10px #00d4ff;
-}
-
-/* Mobile Tweak: Moves arrows slightly so they don't block the cert */
-@media (max-width: 600px) {
-    .nav-btn {
-        padding: 10px 5px;
-        font-size: 1.5rem;
-    }
-    .frame-container {
-        padding: 10px;
-    }
-}
-
-.close-portfolio {
-    position: absolute;
-    top: -45px;
-    right: 10px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-portfolio:hover {
-    color: #ff4d4d; /* Red hover for the close button is a common UI pattern */
-    transform: rotate(90deg);
-}
+.close-portfolio { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
