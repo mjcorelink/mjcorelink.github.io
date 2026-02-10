@@ -16,27 +16,24 @@
         <div class="glow-stars"></div> 
         <div class="meteor-1"></div>
         <div class="meteor-2"></div>
-        <div class="meteor-3"></div>
-        <div class="meteor-4"></div>
     </div>
     
-    <div class="container" id="home-section">
+    <div class="container">
         <section class="profile-side">
             <div id="welcome-bubble" class="speech-bubble">
-                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant!           
+                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner!           
             </div>
             
             <div class="pfp-container">
-                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
+                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo" id="main-pfp"> 
             </div>
 
             <h1>Mark John Gonzalvo</h1>
             
-            <div class="titles-cloud">
-                Customer Service • Content Moderator<br>
-                Administrative Support • Freelancer
-            </div>
+           <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
+
           
+            <br>
             <a href="mailto:your-email@example.com" class="email-btn">Email me</a>
 
             <div class="social-icons">
@@ -63,18 +60,13 @@
         </section>
     </div> 
 
-    <div id="pfp-modal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="img-expanded">
-    </div>
-
     <div id="portfolio-modal" class="portfolio-modal">
         <div class="portfolio-content">
             <span class="close-portfolio" onclick="closePortfolio()">&times;</span>
             <div class="frame-container">
                 <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
                 <div class="slide-wrapper">
-                    <img id="portfolio-img" src="assets/cert1.jpg" alt="Certificate">
+                    <img id="portfolio-img" src="assets/cert1.jpg">
                     <div class="cert-description">
                         <p id="cert-text">Certification 1</p>
                     </div>
@@ -94,32 +86,15 @@
     <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
     <script>
-        // 1. Bubble Fade Logic
-        window.addEventListener('load', function() {
-            const bubble = document.getElementById('welcome-bubble');
-            if (bubble) {
-                setTimeout(() => {
-                    bubble.style.opacity = '0';
-                    setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
-                }, 10000); 
-            }
+        // Bubble Fade
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const b = document.getElementById('welcome-bubble');
+                if(b) b.style.opacity = '0';
+            }, 10000);
         });
 
-        // 2. Profile Pic Magnify Logic
-        const pModal = document.getElementById("pfp-modal");
-        const pImg = document.querySelector(".pfp-container img");
-        const expImg = document.getElementById("img-expanded");
-        const cBtn = document.querySelector(".close-modal");
-
-        if (pImg) {
-            pImg.onclick = function() {
-                pModal.style.display = "flex";
-                expImg.src = this.src;
-            }
-        }
-        if (cBtn) cBtn.onclick = () => pModal.style.display = "none";
-
-        // 3. Portfolio Modal Logic
+        // Portfolio Logic
         let currentSlide = 0;
         const certs = [
             { src: 'assets/cert1.jpg', desc: 'Customer Service Excellence' },
@@ -134,8 +109,8 @@
         function closePortfolio() {
             document.getElementById("portfolio-modal").style.display = "none";
         }
-        function changeSlide(dir) {
-            currentSlide += dir;
+        function changeSlide(n) {
+            currentSlide += n;
             if (currentSlide >= certs.length) currentSlide = 0;
             if (currentSlide < 0) currentSlide = certs.length - 1;
             updateSlide();
@@ -145,10 +120,9 @@
             document.getElementById("cert-text").innerText = certs[currentSlide].desc;
         }
 
-        // 4. Global Outside Click (Closes both modals)
-        window.onclick = function(e) {
-            if (e.target == document.getElementById("portfolio-modal")) closePortfolio();
-            if (e.target == pModal) pModal.style.display = "none";
+        // Close on Click Outside
+        window.onclick = (e) => {
+            if (e.target.id === "portfolio-modal") closePortfolio();
         }
     </script>
 </body>
