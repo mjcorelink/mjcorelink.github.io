@@ -112,5 +112,55 @@
             window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
         });
     </script>
+
+    
+// ... (your existing PFP and Welcome Bubble code) ...
+
+        // PASTE THE NEW PORTFOLIO ALBUM CODE HERE:
+        document.addEventListener("DOMContentLoaded", function() {
+            const myAchievements = [
+                { src: 'assets/cert1.jpg', desc: 'Top Performer Award - Customer Support 2024' },
+                { src: 'assets/cert2.jpg', desc: 'Content Moderation Specialist Certification' },
+                { src: 'assets/cert3.jpg', desc: 'Advanced AI Data Training Project' }
+            ];
+
+            let currentIdx = 0;
+            const albumModal = document.getElementById("portfolio-album-modal");
+            const albumImg = document.getElementById("album-img");
+            const albumText = document.getElementById("album-text");
+            const portfolioBtn = document.querySelector('a[href="#gallery-section"]');
+
+            function updateView() {
+                albumImg.src = myAchievements[currentIdx].src;
+                albumText.innerText = myAchievements[currentIdx].desc;
+            }
+
+            if (portfolioBtn) {
+                portfolioBtn.onclick = function(e) {
+                    e.preventDefault();
+                    albumModal.style.display = "flex";
+                    updateView();
+                }
+            }
+
+            document.getElementById("nextBtn").onclick = () => {
+                currentIdx = (currentIdx + 1) % myAchievements.length;
+                updateView();
+            };
+
+            document.getElementById("prevBtn").onclick = () => {
+                currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length;
+                updateView();
+            };
+
+            document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
+            
+            window.addEventListener("click", (event) => {
+                if (event.target == albumModal) {
+                    albumModal.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
