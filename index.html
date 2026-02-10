@@ -8,144 +8,162 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <!-- Space overlay for thematic background -->
-        <div class="space-overlay">
-            <div class="stars-twinkle"></div>
-            <div class="glow-stars"></div>
-            <div class="meteor-1"></div>
-            <div class="meteor-2"></div>
-        </div>
-    </header>
 
-    <main>
-        <div class="container" id="home-section">
-            <section class="profile-side">
-                <div id="welcome-bubble" class="speech-bubble">
-                    Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!
-                </div>
-
-                <div class="pfp-container">
-                    <img src="assets/pfp.jpg" alt="Profile picture of Mark John Gonzalvo">
-                </div>
-                <h1>Mark John Gonzalvo</h1>
-                <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
-
-                <a href="mailto:markjohngonzalvo@example.com?subject=Inquiry from Portfolio" class="email-btn">Email me</a>
-
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/mjcore" aria-label="Visit my Facebook profile"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://ph.linkedin.com/in/mark-john-gonzalvo-6384b4149" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
-                    <!-- Removed Twitter link as it was a placeholder; add a real URL if available -->
-                </div>
-            </section>
-
-            <section class="about-side">
-                <div class="about-card">
-                    <h2>PROFILE SUMMARY</h2>
-                    <p>
-                        I’ve spent years in customer service and tech support, helping
-                        people through chat, calls, and emails. I also do content moderation,
-                        data tasks, and AI projects. I’m adaptable, efficient, and keep everything
-                        organized, even when things get busy.
-                    </p>
-                    <div class="button-group">
-                        <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
-                        <a href="#gallery-section" class="card-btn">Portfolio</a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Added gallery section to match the portfolio button link -->
-        <section id="gallery-section" class="gallery">
-            <h2>My Portfolio</h2>
-            <p>Here are some examples of my work. (Add images or descriptions as needed.)</p>
-            <!-- Placeholder for portfolio items; customize with your content -->
-            <div class="gallery-item">
-                <img src="assets/sample1.jpg" alt="Sample project 1">
-                <p>Description of project 1.</p>
+    <div class="space-overlay">
+        <div class="stars-twinkle"></div>
+        <div class="glow-stars"></div> 
+        <div class="meteor-1"></div>
+        <div class="meteor-2"></div>
+    </div>
+    
+    <div class="container" id="home-section">
+        
+        <section class="profile-side">
+            <div id="welcome-bubble" class="speech-bubble">
+                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!           
             </div>
-            <div class="gallery-item">
-                <img src="assets/sample2.jpg" alt="Sample project 2">
-                <p>Description of project 2.</p>
+            
+            <div class="pfp-container">
+                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
+            </div>
+            <h1>Mark John Gonzalvo</h1>
+            <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
+          
+            <a href="mailto:your@email.com" class="email-btn">Email me</a>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com/mjcore"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://ph.linkedin.com/in/mark-john-gonzalvo-6384b4149"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a> 
             </div>
         </section>
-    </main>
 
-    <!-- Modal for expanded profile picture -->
-    <div id="pfp-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-        <button class="close-modal" aria-label="Close modal">&times;</button>
-        <img class="modal-content" id="img-expanded" alt="Expanded profile picture of Mark John Gonzalvo">
+        <section class="about-side">
+            <div class="about-card">
+                <h2>PROFILE SUMMARY</h2>
+                <p>
+                    I’ve spent years in customer service and tech support, helping 
+                    people through chat, calls, and emails. I also do content moderation, 
+                    data tasks, and AI projects. I’m adaptable, efficient, and keep everything 
+                    organized, even when things get busy.
+                </p>
+                <div class="button-group">
+                    <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
+                    <a href="#gallery-section" class="card-btn">Portfolio</a>
+                </div>
+            </div>
+        </section>
+        
+    </div> 
+
+    <div id="pfp-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img-expanded">
     </div>
 
-    <!-- Chatbot script -->
+    <div id="portfolio-album-modal" class="modal">
+        <span class="close-album" id="close-portfolio">&times;</span>
+        <div class="album-wrapper">
+            <div class="album-main">
+                <button id="prevBtn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <img id="album-img" src="" alt="Achievement">
+                <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="album-footer">
+                <p id="album-text"></p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        window.chatbaseConfig = {
-            chatbotId: "aWn99QuaimyS0A8WuIJVn",
-            showFloatingInitialMessages: true,
-            floatingInitialMessagesDelay: 3,
-        };
+      window.chatbaseConfig = {
+        chatbotId: "aWn99QuaimyS0A8WuIJVn",
+        showFloatingInitialMessages: true, 
+        floatingInitialMessagesDelay: 3, 
+      };
     </script>
     <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
     <script>
-        // Welcome Bubble Logic: Fade out after 15 seconds or on click
+        // 1. Welcome Bubble Logic
         window.addEventListener('load', function() {
             const bubble = document.getElementById('welcome-bubble');
             if (bubble) {
-                // Make dismissible on click
-                bubble.addEventListener('click', function() {
-                    bubble.style.opacity = '0';
-                    setTimeout(() => { bubble.style.display = 'none'; }, 1000);
-                });
-                // Auto-fade after 15 seconds
                 setTimeout(() => {
-                    if (bubble.style.display !== 'none') {
-                        bubble.style.opacity = '0';
-                        setTimeout(() => { bubble.style.display = 'none'; }, 1000);
-                    }
-                }, 15000);
+                    bubble.style.opacity = '0';
+                    setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
+                }, 15000); 
             }
         });
 
-        // PFP Modal Logic with accessibility and keyboard support
+        // 2. PFP Modal Logic (Existing)
         document.addEventListener("DOMContentLoaded", function() {
-            const modal = document.getElementById("pfp-modal");
+            const pfpModal = document.getElementById("pfp-modal");
             const pfpImg = document.querySelector(".pfp-container img");
             const modalImg = document.getElementById("img-expanded");
-            const closeBtn = document.querySelector(".close-modal");
-
-            function openModal() {
-                modal.style.display = "flex";
-                modal.setAttribute('aria-hidden', 'false');
-                modalImg.src = pfpImg.src;
-                // Focus trap (basic): Focus on close button
-                closeBtn.focus();
-            }
-
-            function closeModal() {
-                modal.style.display = "none";
-                modal.setAttribute('aria-hidden', 'true');
-            }
+            const closePfp = document.querySelector(".close-modal");
 
             if (pfpImg) {
-                pfpImg.addEventListener('click', openModal);
-            }
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeModal);
-            }
-            // Close on outside click
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    closeModal();
+                pfpImg.onclick = function() {
+                    pfpModal.style.display = "flex";
+                    modalImg.src = this.src;
                 }
+            }
+            if (closePfp) closePfp.onclick = () => pfpModal.style.display = "none";
+            
+            // Global click closer for PFP
+            window.addEventListener("click", (e) => {
+                if (e.target == pfpModal) pfpModal.style.display = "none";
             });
-            // Close on Escape key
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && modal.style.display === 'flex') {
-                    closeModal();
+        });
+
+        // 3. Portfolio Album Logic (New)
+        document.addEventListener("DOMContentLoaded", function() {
+            // EDIT YOUR ACHIEVEMENTS HERE:
+            const myAchievements = [
+                { src: 'assets/cert1.jpg', desc: 'Top Performer Award - Customer Support 2024' },
+                { src: 'assets/cert2.jpg', desc: 'Content Moderator Specialist Certification' },
+                { src: 'assets/cert3.jpg', desc: 'Advanced AI Data Training Project' }
+            ];
+
+            let currentIdx = 0;
+            const albumModal = document.getElementById("portfolio-album-modal");
+            const albumImg = document.getElementById("album-img");
+            const albumText = document.getElementById("album-text");
+            const portfolioBtn = document.querySelector('a[href="#gallery-section"]');
+
+            function updateView() {
+                if(myAchievements.length > 0) {
+                    albumImg.src = myAchievements[currentIdx].src;
+                    albumText.innerText = myAchievements[currentIdx].desc;
                 }
+            }
+
+            if (portfolioBtn) {
+                portfolioBtn.onclick = function(e) {
+                    e.preventDefault();
+                    albumModal.style.display = "flex";
+                    updateView();
+                }
+            }
+
+            document.getElementById("nextBtn").onclick = (e) => {
+                e.stopPropagation();
+                currentIdx = (currentIdx + 1) % myAchievements.length;
+                updateView();
+            };
+
+            document.getElementById("prevBtn").onclick = (e) => {
+                e.stopPropagation();
+                currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length;
+                updateView();
+            };
+
+            document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
+            
+            // Close on outer click
+            window.addEventListener("click", (e) => {
+                if (e.target == albumModal) albumModal.style.display = "none";
             });
         });
     </script>
