@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark John Gonzalvo | Portfolio</title>
-    
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -16,13 +14,11 @@
         <div class="glow-stars"></div> 
         <div class="meteor-1"></div>
         <div class="meteor-2"></div>
-         <div class="meteor-3"></div>
-                 <div class="meteor-4"></div>
-
+        <div class="meteor-3"></div>
+        <div class="meteor-4"></div>
     </div>
     
     <div class="container" id="home-section">
-        
         <section class="profile-side">
             <div id="welcome-bubble" class="speech-bubble">
                 Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant!           
@@ -59,11 +55,10 @@
                 </p>
                 <div class="button-group">
                     <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
-                    <a href="#gallery-section" class="card-btn">Portfolio</a>
+                    <a href="javascript:void(0)" class="card-btn" onclick="openPortfolio()">Portfolio</a>
                 </div>
             </div>
         </section>
-        
     </div> 
 
     <div id="pfp-modal" class="modal">
@@ -71,7 +66,21 @@
         <img class="modal-content" id="img-expanded">
     </div>
 
-    
+    <div id="portfolio-modal" class="portfolio-modal">
+        <div class="portfolio-content">
+            <span class="close-portfolio" onclick="closePortfolio()">&times;</span>
+            <div class="frame-container">
+                <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                <div class="slide-wrapper">
+                    <img id="portfolio-img" src="assets/cert1.jpg" alt="Certificate">
+                    <div class="cert-description">
+                        <p id="cert-text">Certification 1</p>
+                    </div>
+                </div>
+                <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
 
     <script>
       window.chatbaseConfig = {
@@ -83,7 +92,7 @@
     <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
     <script>
-        // Bubble Logic
+        // 1. Bubble Fade Out
         window.addEventListener('load', function() {
             const bubble = document.getElementById('welcome-bubble');
             if (bubble) {
@@ -94,44 +103,21 @@
             }
         });
 
-        // Modal Logic
-        const modal = document.getElementById("pfp-modal");
+        // 2. Profile Picture Modal Logic
+        const pfpModal = document.getElementById("pfp-modal");
         const pfpImg = document.querySelector(".pfp-container img");
         const modalImg = document.getElementById("img-expanded");
-        const closeBtn = document.querySelector(".close-modal");
+        const closePfp = document.querySelector(".close-modal");
 
         if (pfpImg) {
             pfpImg.onclick = function() {
-                modal.style.display = "flex";
+                pfpModal.style.display = "flex";
                 modalImg.src = this.src;
             }
         }
-        if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
-        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
-    </script>
+        if (closePfp) closePfp.onclick = () => pfpModal.style.display = "none";
 
-    
-
-    <div id="portfolio-modal" class="portfolio-modal">
-    <div class="portfolio-content">
-        <span class="close-portfolio" onclick="closePortfolio()">&times;</span>
-        
-        <div class="frame-container">
-            <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-            
-            <div class="slide-wrapper">
-                <img id="portfolio-img" src="assets/cert1.jpg" alt="Certificate">
-                <div class="cert-description">
-                    <p id="cert-text">Certification 1</p>
-                </div>
-            </div>
-
-            <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
-        </div>
-    </div>
-</div>
-    
-<script>
+        // 3. Portfolio Modal Logic
         let currentSlide = 0;
         const certs = [
             { src: 'assets/cert1.jpg', desc: 'Customer Service Excellence' },
@@ -156,17 +142,20 @@
         }
 
         function updateSlide() {
-            const imgElement = document.getElementById("portfolio-img");
-            const textElement = document.getElementById("cert-text");
-            
-            imgElement.src = certs[currentSlide].src;
-            textElement.innerText = certs[currentSlide].desc;
+            document.getElementById("portfolio-img").src = certs[currentSlide].src;
+            document.getElementById("cert-text").innerText = certs[currentSlide].desc;
         }
 
+        // 4. Unified "Click Outside to Close" Logic
         window.onclick = function(event) {
-            const modal = document.getElementById("portfolio-modal");
-            if (event.target == modal) {
+            const portModal = document.getElementById("portfolio-modal");
+            const pModal = document.getElementById("pfp-modal");
+            
+            if (event.target == portModal) {
                 closePortfolio();
+            }
+            if (event.target == pModal) {
+                pModal.style.display = "none";
             }
         }
     </script>
