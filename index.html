@@ -1,104 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark John Gonzalvo | MJ Verse</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark John Gonzalvo | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <div class="container">
-        <section class="profile-side">
-            <div id="welcome-bubble" class="speech-bubble">
-                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!
-            </div>
-            
-            <div class="pfp-container">
-                <img src="assets/pfp.jpg" id="pfp-trigger" alt="Mark John Gonzalvo">
-            </div>
-            
-            <h1 class="glow-name">Mark John Gonzalvo</h1>
-            
-            <div class="titles-container">
-                <div class="titles-box">Customer Service</div>
-                <div class="titles-box">Content Moderator</div>
-                <div class="titles-box">Administrative Support</div>
-                <div class="titles-box">Freelancer</div>
-            </div>
+    <div class="space-overlay">
+        <div class="stars-twinkle"></div>
+        <div class="glow-stars"></div> 
+        <div class="meteor-1"></div>
+        <div class="meteor-2"></div>
+    </div>
+    
+    <div class="container" id="home-section">
+        
+        <section class="profile-side">
+            <div id="welcome-bubble" class="speech-bubble">
+                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!           
+            </div>
+            
+            <div class="pfp-container">
+                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
+            </div>
+            <h1>Mark John Gonzalvo</h1>
+            <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
+          
+            <a href="mailto:your@email.com" class="email-btn">Email me</a>
 
-            <a href="mailto:your@email.com" class="email-btn">Email me</a>
-            
-            <div class="social-icons">
-                <a href="https://www.facebook.com/mjcore" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://ph.linkedin.com/in/mark-john-gonzalvo-6384b4149" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            </div>
-        </section>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/mjcore"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://ph.linkedin.com/in/mark-john-gonzalvo-6384b4149"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a> 
+            </div>
+        </section>
 
-        <section class="about-side">
-            <div class="about-card">
-                <h2 style="color:#00d4ff; margin-bottom:20px; font-size: 1.5rem;">PROFILE SUMMARY</h2>
-                <p>
-                    I’ve spent years in customer service and tech support, helping people 
-                    through chat, calls, and emails. I also do content moderation, data tasks, 
-                    and AI projects. I’m adaptable, efficient, and keep everything organized.
-                </p>
-                <div style="margin-top: 30px; display: flex; gap: 15px;">
-                    <a href="assets/Resume.pdf" target="_blank" class="nav-btn" style="text-decoration:none; text-align:center;">Resume</a>
-                    <button class="nav-btn" id="openPortfolio">Portfolio</button>
-                </div>
-            </div>
-        </section>
-    </div>
+        <section class="about-side">
+            <div class="about-card">
+                <h2>PROFILE SUMMARY</h2>
+                <p>
+                    I’ve spent years in customer service and tech support, helping 
+                    people through chat, calls, and emails. I also do content moderation, 
+                    data tasks, and AI projects. I’m adaptable, efficient, and keep everything 
+                    organized, even when things get busy.
+                </p>
+                <div class="button-group">
+                    <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
+                    <a href="#gallery-section" class="card-btn">Portfolio</a>
+                </div>
+            </div>
+        </section>
+        
+    </div> <div id="pfp-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img-expanded">
+    </div>
 
-    <div id="portfolio-modal" class="modal">
-        <span style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;" id="close-portfolio">&times;</span>
-        <div class="modal-content">
-            <div class="img-frame"><img id="album-img" src=""></div>
-            <p id="album-text" style="color:#00d4ff; margin-bottom:15px; text-align:center; font-weight:bold;"></p>
-            <div style="display:flex; gap:15px;">
-                <button id="prevBtn" class="nav-btn">PREV</button>
-                <button id="nextBtn" class="nav-btn">NEXT</button>
-            </div>
-        </div>
-    </div>
+    
+    <script>
+      window.chatbaseConfig = {
+        chatbotId: "aWn99QuaimyS0A8WuIJVn",
+        showFloatingInitialMessages: true, 
+        floatingInitialMessagesDelay: 3, 
+      };
+    </script>
+    <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
-    <div id="pfp-modal" class="modal">
-        <span style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;" id="close-pfp">&times;</span>
-        <img src="assets/pfp.jpg" style="max-width:80%; border:3px solid #00d4ff; border-radius:20px;">
-    </div>
+    <script>
+        // Welcome Bubble Logic
+        window.addEventListener('load', function() {
+            const bubble = document.getElementById('welcome-bubble');
+            if (bubble) {
+                setTimeout(() => {
+                    bubble.style.opacity = '0';
+                    setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
+                }, 15000); 
+            }
+        });
 
-    <script>
-        // 20-SECOND FADE
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const bubble = document.getElementById('welcome-bubble');
-                if(bubble) bubble.classList.add('fade-out');
-            }, 20000);
-        });
+        // PFP Modal Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("pfp-modal");
+            const pfpImg = document.querySelector(".pfp-container img");
+            const modalImg = document.getElementById("img-expanded");
+            const closeBtn = document.querySelector(".close-modal");
 
-        // PORTFOLIO
-        const achievements = [
-            { src: 'assets/cert1.jpg', desc: 'Top Performer Award - Customer Support 2024' },
-            { src: 'assets/cert2.jpg', desc: 'Movie Anchor Library Top 3 Agent - June 2025' }
-        ];
-        let idx = 0;
-        const pModal = document.getElementById("portfolio-modal");
-        document.getElementById("openPortfolio").onclick = () => { pModal.style.display = "flex"; update(); };
-        document.getElementById("close-portfolio").onclick = () => pModal.style.display = "none";
-        function update() {
-            document.getElementById("album-img").src = achievements[idx].src;
-            document.getElementById("album-text").innerText = achievements[idx].desc;
-        }
-        document.getElementById("nextBtn").onclick = () => { idx = (idx + 1) % achievements.length; update(); };
-        document.getElementById("prevBtn").onclick = () => { idx = (idx - 1 + achievements.length) % achievements.length; update(); };
-
-        // PFP ZOOM
-        const pfpM = document.getElementById("pfp-modal");
-        document.getElementById("pfp-trigger").onclick = () => pfpM.style.display = "flex";
-        document.getElementById("close-pfp").onclick = () => pfpM.style.display = "none";
-    </script>
+            if (pfpImg) {
+                pfpImg.onclick = function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                }
+            }
+            if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
+            window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+        });
+    </script>
 </body>
 </html>
