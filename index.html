@@ -1,3 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark John Gonzalvo | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Paste the CSS I gave you in the previous message here */
+        /* This ensures that even if style.css fails to link, your site looks perfect */
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { 
+            background: #050505 url('assets/bg.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            color: white; 
+            overflow-x: hidden;
+        }
+        .container { 
+            min-height: 100vh; display: flex; justify-content: center; align-items: center; 
+            gap: 60px; padding: 50px 20px; position: relative; z-index: 10;
+        }
+        .profile-side { text-align: center; flex: 1; display: flex; flex-direction: column; align-items: center; }
+        .pfp-container img { 
+            width: 200px; height: 200px; border-radius: 50%; border: 2px solid #00d4ff; 
+            object-fit: cover; box-shadow: 0 0 25px rgba(0, 212, 255, 0.5); cursor: pointer; transition: 0.3s; 
+        }
+        .pfp-container img:hover { transform: scale(1.05); }
+        h1 { margin-top: 20px; font-size: 2.2rem; }
+        .titles { margin: 15px 0; color: #00d4ff; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; }
+        .social-icons { margin-top: 20px; display: flex; gap: 20px; }
+        .social-icons a i { color: white; font-size: 1.5rem; transition: 0.3s; }
+        .social-icons a:hover i { color: #00d4ff; transform: scale(1.2); }
+        .about-card { 
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(15px); 
+            padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); flex: 1.2;
+        }
+        .email-btn, .card-btn { 
+            display: inline-block; text-decoration: none; color: #00d4ff; border: 1px solid #00d4ff; 
+            padding: 10px 25px; border-radius: 25px; transition: 0.3s; margin-top: 10px;
+        }
+        .email-btn:hover, .card-btn:hover { background: #00d4ff; color: black; box-shadow: 0 0 20px #00d4ff; }
+        
+        /* Modal Style */
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .modal-content { max-width: 80%; border-radius: 15px; border: 2px solid #00d4ff; }
+        
+        @media (max-width: 850px) { .container { flex-direction: column; text-align: center; } }
+    </style>
+</head>
 <body>
 
     <div class="space-overlay">
@@ -11,7 +62,7 @@
         
         <section class="profile-side">
             <div id="welcome-bubble" class="speech-bubble">
-                Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!           
+                Hi, MJ here! Welcome to my space site.
             </div>
             
             <div class="pfp-container">
@@ -21,10 +72,8 @@
             <h1>Mark John Gonzalvo</h1>
             
             <p class="titles">
-                Customer Service<br>
-                Content Moderator<br>
-                Administrative Support<br>
-                Freelancer
+                Customer Service • Content Moderator<br>
+                Administrative Support • Freelancer
             </p>
           
             <a href="mailto:your@email.com" class="email-btn">Email me</a>
@@ -36,63 +85,49 @@
             </div>
         </section>
 
-        <section class="about-side" id="about-section">
+        <section class="about-side">
             <div class="about-card">
                 <h2>PROFILE SUMMARY</h2>
                 <p>
                     I’ve spent years in customer service and tech support, helping 
                     people through chat, calls, and emails. I also do content moderation, 
-                    data tasks, and AI projects. I’m adaptable, efficient, and keep everything 
-                    organized, even when things get busy.
+                    data tasks, and AI projects. I’m adaptable and efficient.
                 </p>
-                <div class="button-group">
+                <div class="button-group" style="display: flex; gap: 10px;">
                     <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
                     <a href="#gallery-section" class="card-btn">Portfolio</a>
                 </div>
             </div>
         </section>
         
-    </div> <div id="pfp-modal" class="modal">
-        <span class="close-modal">&times;</span>
+    </div> 
+
+    <div id="pfp-modal" class="modal">
+        <span class="close-modal" style="position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer;">&times;</span>
         <img class="modal-content" id="img-expanded">
     </div>
 
     <script>
-      window.chatbaseConfig = {
-        chatbotId: "aWn99QuaimyS0A8WuIJVn",
-        showFloatingInitialMessages: true, 
-        floatingInitialMessagesDelay: 3, 
-      };
-    </script>
-    <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
-
-    <script>
-        // Welcome Bubble Logic
+        // Bubble Fade Out
         window.addEventListener('load', function() {
             const bubble = document.getElementById('welcome-bubble');
             if (bubble) {
                 setTimeout(() => {
                     bubble.style.opacity = '0';
                     setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
-                }, 15000); 
+                }, 8000); 
             }
         });
 
-        // PFP Modal Logic
-        document.addEventListener("DOMContentLoaded", function() {
-            const modal = document.getElementById("pfp-modal");
-            const pfpImg = document.querySelector(".pfp-container img");
-            const modalImg = document.getElementById("img-expanded");
-            const closeBtn = document.querySelector(".close-modal");
+        // Modal Logic
+        const modal = document.getElementById("pfp-modal");
+        const pfpImg = document.querySelector(".pfp-container img");
+        const modalImg = document.getElementById("img-expanded");
+        const closeBtn = document.querySelector(".close-modal");
 
-            if (pfpImg) {
-                pfpImg.onclick = function() {
-                    modal.style.display = "flex";
-                    modalImg.src = this.src;
-                }
-            }
-            if (closeBtn) closeBtn.onclick = () => modal.style.display = "none";
-            window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
-        });
+        pfpImg.onclick = () => { modal.style.display = "flex"; modalImg.src = pfpImg.src; }
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
     </script>
 </body>
+</html>
