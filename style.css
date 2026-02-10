@@ -35,7 +35,6 @@ body {
     z-index: 10;
     position: relative;
 }
-}
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 850px) {
@@ -420,7 +419,7 @@ h1 {
 }
 
 .album-footer {
-    margin-top: 20px;
+    margin-top: 20px;index
     background: rgba(0, 0, 0, 0.6);
     padding: 15px 30px;
     border-radius: 10px;
