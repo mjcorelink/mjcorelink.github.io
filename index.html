@@ -1,15 +1,18 @@
 <div class="container">
     <section class="profile-side">
         <div class="speech-bubble">Hi, MJ here! Welcome to my space site...</div>
-        <div class="pfp-container"><img src="assets/pfp.jpg" id="pfp-trigger"></div>
+        <div class="pfp-container"><img src="assets/pfp.jpg"></div>
         <h1 class="glow-text">Mark John Gonzalvo</h1>
+        
         <div class="titles-container">
             <div class="titles-box">Customer Service</div>
             <div class="titles-box">Content Moderator</div>
             <div class="titles-box">Administrative Support</div>
             <div class="titles-box">Freelancer</div>
         </div>
-        <a href="mailto:your@email.com" class="email-btn" style="margin-bottom:15px;">Email me</a>
+
+        <a href="mailto:your@email.com" class="card-btn" style="background:#00d4ff; color:black;">Email me</a>
+
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -20,7 +23,7 @@
     <section class="about-side">
         <div class="about-card">
             <h2 style="color:#00d4ff; margin-bottom:15px;">PROFILE SUMMARY</h2>
-            <p>I’ve spent years in customer service and tech support... (your text here)</p>
+            <p>I’ve spent years in customer service and tech support...</p>
             <div style="display:flex; gap:15px;">
                 <a href="assets/Resume.pdf" target="_blank" class="card-btn">Resume</a>
                 <a href="#" class="card-btn" id="openPortfolio">Portfolio</a>
@@ -31,12 +34,12 @@
 
 <div id="portfolio-modal" class="modal">
     <div class="album-wrapper">
-        <span id="close-portfolio" style="position:absolute; top:-40px; right:0; cursor:pointer; font-size:30px;">&times;</span>
+        <span id="close-portfolio" style="align-self:flex-end; cursor:pointer; font-size:30px; margin-bottom:10px;">&times;</span>
         <img id="album-img" src="">
         <div class="album-footer">
             <p id="album-text"></p>
         </div>
-        <div style="margin-top:20px;">
+        <div class="nav-controls">
             <button id="prevBtn" class="card-btn">Prev</button>
             <button id="nextBtn" class="card-btn">Next</button>
         </div>
@@ -50,11 +53,11 @@
     ];
 
     let currentIdx = 0;
-    const portModal = document.getElementById("portfolio-modal");
+    const modal = document.getElementById("portfolio-modal");
 
     document.getElementById("openPortfolio").onclick = (e) => {
         e.preventDefault();
-        portModal.style.display = "flex";
+        modal.style.display = "flex";
         updateView();
     };
 
@@ -65,5 +68,5 @@
 
     document.getElementById("nextBtn").onclick = () => { currentIdx = (currentIdx + 1) % myAchievements.length; updateView(); };
     document.getElementById("prevBtn").onclick = () => { currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length; updateView(); };
-    document.getElementById("close-portfolio").onclick = () => portModal.style.display = "none";
+    document.getElementById("close-portfolio").onclick = () => modal.style.display = "none";
 </script>
