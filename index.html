@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MJ Verse</title>
+    <title>MJ Verse | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="particles-js" style="position:fixed; width:100%; height:100%; z-index:-1;"></div>
+    <div id="particles-js"></div>
 
     <div class="container">
         <section class="profile-side">
@@ -21,7 +21,7 @@
                 <img src="assets/pfp.jpg" id="pfp-trigger" alt="MJ">
             </div>
             
-            <h1 class="glow-text" style="font-size: 2rem; text-shadow: 0 0 10px #00d4ff; margin: 15px 0;">Mark John Gonzalvo</h1>
+            <h1 style="font-size: 2.2rem; text-shadow: 0 0 15px #00d4ff; margin: 15px 0;">Mark John Gonzalvo</h1>
             
             <div class="titles-container">
                 <div class="titles-box">Customer Service</div>
@@ -31,13 +31,19 @@
             </div>
 
             <a href="mailto:your@email.com" class="email-btn">Email me</a>
+            
+            <div style="display:flex; gap:20px; margin-top:20px;">
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-x-twitter"></i></a>
+            </div>
         </section>
 
         <section class="about-side">
             <div class="about-card">
-                <h2 style="color:#00d4ff; margin-bottom:15px;">PROFILE SUMMARY</h2>
-                <p>I’ve spent years in customer service and tech support, helping people through chat, calls, and emails. I also do content moderation and AI projects.</p>
-                <div class="button-group" style="display:flex; gap:15px; margin-top:20px;">
+                <h2 style="color:#00d4ff; margin-bottom:15px; letter-spacing:1px;">PROFILE SUMMARY</h2>
+                <p style="line-height:1.6;">I’ve spent years in customer service and tech support, helping people through chat, calls, and emails. I also do content moderation, data tasks, and AI projects. I’m adaptable, efficient, and keep everything organized.</p>
+                <div style="display:flex; gap:15px; margin-top:25px;">
                     <a href="assets/Resume.pdf" target="_blank" class="card-btn">Resume</a>
                     <button class="card-btn" id="openPortfolio">Portfolio</button>
                 </div>
@@ -52,7 +58,7 @@
                 <img id="album-img" src="">
             </div>
             <div class="album-footer">
-                <p id="album-text"></p>
+                <p id="album-text" style="color:#00d4ff; font-size:14px;"></p>
             </div>
             <div class="nav-controls">
                 <button id="prevBtn" class="nav-btn">PREV</button>
@@ -63,14 +69,41 @@
 
     <div id="pfp-modal" class="modal">
         <span class="close-x" id="close-pfp">&times;</span>
-        <img src="assets/pfp.jpg" style="max-width:80%; border:3px solid #00d4ff; border-radius:20px;">
+        <img src="assets/pfp.jpg" style="max-width:80%; border:3px solid #00d4ff; border-radius:20px; box-shadow:0 0 50px #00d4ff;">
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        /* 1. PARTICLES ENGINE */
+        /* 1. ATMOSPHERIC PARTICLE ENGINE */
         particlesJS("particles-js", {
-            "particles": { "number": { "value": 100 }, "move": { "enable": true, "speed": 2, "direction": "bottom-left", "straight": true } }
+          "particles": {
+            "number": { "value": 150, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle" },
+            "opacity": { 
+                "value": 0.8, 
+                "random": true, 
+                "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } 
+            },
+            "size": { 
+                "value": 2, 
+                "random": true, 
+                "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } 
+            },
+            "line_linked": { "enable": false },
+            "move": { 
+                "enable": true, 
+                "speed": 4, /* Speed for "Shooting Star" feel */
+                "direction": "bottom-left", 
+                "random": false, 
+                "straight": true, 
+                "out_mode": "out" 
+            }
+          },
+          "interactivity": {
+            "events": { "onhover": { "enable": true, "mode": "bubble" } },
+            "modes": { "bubble": { "distance": 200, "size": 0, "duration": 2, "opacity": 0 } }
+          }
         });
 
         /* 2. CLOUD VANISH (20 SECONDS) */
@@ -83,8 +116,8 @@
 
         /* 3. PORTFOLIO LOGIC */
         const achievements = [
-            { src: 'assets/cert1.jpg', desc: 'Top Performer - 2024' },
-            { src: 'assets/cert2.jpg', desc: 'Top 3 Agent - 2025' }
+            { src: 'assets/cert1.jpg', desc: 'Top Performer Award - Customer Support 2024' },
+            { src: 'assets/cert2.jpg', desc: 'Movie Anchor Library Top 3 Agent - June 2025' }
         ];
         let idx = 0;
         const pModal = document.getElementById("portfolio-modal");
