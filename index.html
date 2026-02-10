@@ -2,10 +2,10 @@
 
 <div class="container">
     <section class="profile-side">
-        <div class="speech-bubble">Hi, MJ here! Welcome to my space site...</div>
+        <div class="speech-bubble">Hi, MJ here! Welcome back...</div>
         
         <div class="pfp-container">
-            <img src="assets/pfp.jpg" id="pfp-trigger" style="cursor: zoom-in;" alt="MJ">
+            <img src="assets/pfp.jpg" id="pfp-trigger" alt="MJ">
         </div>
         
         <h1 class="glow-text">Mark John Gonzalvo</h1>
@@ -16,6 +16,7 @@
             <div class="titles-box">Administrative Support</div>
             <div class="titles-box">Freelancer</div>
         </div>
+        
         <a href="mailto:your@email.com" class="email-btn">Email me</a>
     </section>
 
@@ -32,25 +33,20 @@
 </div>
 
 <div id="pfp-modal" class="modal">
-    <div class="modal-content">
-        <span id="close-pfp" class="close-btn">&times;</span>
-        <img src="assets/pfp.jpg" class="zoomed-pfp">
-    </div>
+    <span id="close-pfp" class="close-btn">&times;</span>
+    <img src="assets/pfp.jpg" class="zoomed-pfp">
 </div>
-
-<div id="portfolio-modal" class="modal">
-    </div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    /* 1. METEOR & STAR MOTION */
+    /* METEOR & STAR ENGINE */
     particlesJS("particles-js", {
         "particles": {
-            "number": { "value": 100 },
+            "number": { "value": 120 },
             "move": { 
                 "enable": true, 
-                "speed": 2, 
-                "direction": "bottom-left", /* METEOR DIRECTION */
+                "speed": 3, 
+                "direction": "bottom-left", 
                 "straight": true 
             },
             "size": { "value": 2, "random": true },
@@ -58,11 +54,18 @@
         }
     });
 
-    /* 2. PFP ZOOM LOGIC */
+    /* LIGHTBOX LOGIC */
     const pfpModal = document.getElementById("pfp-modal");
-    document.getElementById("pfp-trigger").onclick = () => pfpModal.style.display = "flex";
-    document.getElementById("close-pfp").onclick = () => pfpModal.style.display = "none";
+    const pfpTrigger = document.getElementById("pfp-trigger");
+    const closePfp = document.getElementById("close-pfp");
 
-    /* 3. PORTFOLIO LOGIC */
-    // ... (Your portfolio next/prev code goes here)
+    pfpTrigger.onclick = () => pfpModal.style.display = "flex";
+    closePfp.onclick = () => pfpModal.style.display = "none";
+    
+    // Close modal if clicking outside the image
+    window.onclick = (event) => {
+        if (event.target == pfpModal) {
+            pfpModal.style.display = "none";
+        }
+    }
 </script>
