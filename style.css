@@ -1,175 +1,90 @@
-/* --- 1. BASE SETUP & SPACE BG --- */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-}
+/* --- 1. BASE SETUP --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
 body {
-    background: #050505; /* Fallback deep space color */
+    background: #050505;
     color: white;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
+/* --- 2. LAYOUT & CLOUD --- */
 .container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
     position: relative;
     z-index: 1;
 }
 
-/* --- 2. LEFT SIDE: PROFILE & CENTERED LABELS --- */
-.profile-side {
-    flex: 0 0 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Forces everything to center under name */
-    text-align: center;
-}
+.profile-side { flex: 0 0 320px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 
-/* SPEECH BUBBLE & POINTING TIP */
 .speech-bubble {
     position: relative;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     padding: 15px;
     border-radius: 15px;
     font-size: 13px;
     margin-bottom: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
     max-width: 260px;
     opacity: 1;
-    transition: opacity 1.5s ease, transform 1.5s ease;
+    transition: opacity 1.5s ease, transform 1.5s ease, visibility 1.5s;
 }
 
 .speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid rgba(0, 0, 0, 0.8);
+    content: ''; position: absolute; bottom: -10px; left: 50%;
+    transform: translateX(-50%); border-left: 10px solid transparent;
+    border-right: 10px solid transparent; border-top: 10px solid rgba(0, 0, 0, 0.85);
 }
 
-/* The 20-second fade-out class */
+/* THE VANISHING LOGIC */
 .fade-out {
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
+    opacity: 0 !important;
+    transform: translateY(-20px) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
-/* PFP HOVER POP EFFECT */
+/* --- 3. PFP & LABELS --- */
 .pfp-container img {
-    width: 170px; 
-    height: 170px; 
-    border-radius: 50%;
+    width: 170px; height: 170px; border-radius: 50%;
     border: 3px solid #00d4ff; 
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: zoom-in;
     object-fit: cover;
 }
 
-.pfp-container img:hover {
-    transform: scale(1.1); /* The "Pop" effect */
-    box-shadow: 0 0 35px rgba(0, 212, 255, 0.8);
-}
+.pfp-container img:hover { transform: scale(1.1); box-shadow: 0 0 30px #00d4ff; }
 
-.glow-text {
-    font-size: 2.2rem;
-    text-shadow: 0 0 15px #00d4ff;
-    margin: 15px 0;
-}
-
-/* CENTERED NARROW LABELS */
-.titles-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
+.titles-container { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 20px 0; }
 .titles-box {
-    background: rgba(0, 212, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(0, 212, 255, 0.4);
-    border-radius: 6px;
-    padding: 6px 0;
-    width: 200px; /* Locked width so they align perfectly */
-    color: #00d4ff;
-    font-size: 13px;
-    transition: 0.3s;
-    text-align: center;
+    background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 6px; padding: 6px 0; width: 200px; color: #00d4ff; font-size: 13px; text-align: center;
 }
 
-.titles-box:hover {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
-    background: rgba(0, 212, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-/* --- 3. RIGHT SIDE: PROFILE SUMMARY GLASS --- */
-.about-side { flex: 0 1 550px; }
-
+/* --- 4. SUMMARY CARD --- */
 .about-card {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(25px); /* Strong glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px;
+    border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 }
-
-.about-card h2 { color: #00d4ff; margin-bottom: 20px; font-size: 1.6rem; text-transform: uppercase; }
-.about-card p { line-height: 1.7; margin-bottom: 30px; font-size: 15px; color: #e0e0e0; }
-
-/* --- 4. BUTTONS & SOCIALS --- */
-.button-group { display: flex; gap: 15px; }
 
 .card-btn, .email-btn {
-    text-decoration: none;
-    color: white;
-    border: 1px solid #00d4ff;
-    padding: 12px 28px;
-    border-radius: 8px;
-    background: rgba(0, 212, 255, 0.1);
-    transition: 0.3s;
-    font-size: 14px;
-    font-weight: 600;
+    text-decoration: none; color: white; border: 1px solid #00d4ff;
+    padding: 12px 25px; border-radius: 8px; background: rgba(0, 212, 255, 0.1);
+    transition: 0.3s; font-size: 14px; cursor: pointer;
 }
+.card-btn:hover { background: #00d4ff; color: black; box-shadow: 0 0 20px #00d4ff; }
+.email-btn { background: #00d4ff; color: black; font-weight: bold; }
 
-.email-btn { background: #00d4ff; color: #000; }
-
-.card-btn:hover, .email-btn:hover {
-    background: #00d4ff;
-    color: black;
-    box-shadow: 0 0 25px #00d4ff;
-}
-
-.social-icons { display: flex; gap: 25px; margin-top: 25px; }
-.social-icons a { color: white; font-size: 1.6rem; transition: 0.3s; }
-.social-icons a:hover { 
-    color: #00d4ff; 
-    transform: translateY(-5px) scale(1.2); 
-    filter: drop-shadow(0 0 8px #00d4ff);
-}
-
-/* --- 5. MODAL SYSTEM (PFP & PORTFOLIO) --- */
+/* --- 5. FIXED PORTFOLIO MODAL (VISIBLE AT 100% ZOOM) --- */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 10000;
+    display: none; position: fixed; z-index: 9999;
     left: 0; top: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.95);
     justify-content: center; align-items: center;
@@ -177,52 +92,31 @@ body {
 
 .modal-content {
     display: flex; flex-direction: column; align-items: center;
-    width: 90%; max-width: 850px;
-    position: relative;
+    width: 90%; max-width: 600px; /* Reduced width to prevent overflow */
+    padding: 20px; background: rgba(20, 20, 20, 0.8);
+    border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2);
 }
 
-.zoomed-pfp {
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 15px;
-    border: 2px solid #00d4ff;
-    animation: zoomIn 0.3s ease-out;
+/* GLOWING FRAME FOR IMAGE */
+.img-frame {
+    width: 100%; max-height: 50vh; /* Limits image height to 50% of screen */
+    border: 3px solid #00d4ff; border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+    overflow: hidden; margin-bottom: 20px;
 }
 
-#album-img {
-    max-width: 100%;
-    max-height: 70vh;
-    border-radius: 10px;
-    border: 2px solid #00d4ff;
-}
+#album-img { width: 100%; height: auto; display: block; }
 
-.album-footer {
-    background: rgba(0,0,0,0.8);
-    padding: 15px;
-    margin-top: 15px;
-    border-bottom: 3px solid #00d4ff;
-    width: 100%;
-    text-align: center;
-}
+.album-footer { margin-bottom: 20px; text-align: center; color: #00d4ff; font-weight: bold; }
 
-.close-btn {
-    position: absolute;
-    top: -55px;
-    right: 0;
-    font-size: 45px;
-    color: white;
-    cursor: pointer;
+/* GLOWING NAVIGATION BUTTONS */
+.nav-controls { display: flex; gap: 20px; }
+.nav-btn {
+    background: transparent; color: #00d4ff; border: 2px solid #00d4ff;
+    padding: 10px 30px; border-radius: 30px; cursor: pointer;
+    font-weight: bold; transition: 0.3s;
+    text-shadow: 0 0 8px #00d4ff; box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
 }
+.nav-btn:hover { background: #00d4ff; color: black; box-shadow: 0 0 20px #00d4ff; }
 
-@keyframes zoomIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* --- 6. MOBILE RESPONSIVENESS --- */
-@media (max-width: 850px) {
-    .container { flex-direction: column; padding-top: 80px; gap: 40px; }
-    .profile-side { flex: 1; width: 100%; }
-    .about-side { flex: 1; width: 100%; }
-    .speech-bubble { max-width: 90%; }
-}
+.close-x { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
