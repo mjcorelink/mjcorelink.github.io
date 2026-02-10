@@ -65,8 +65,6 @@
         <span class="close-album" id="close-portfolio">&times;</span>
         <div class="album-wrapper">
             <div class="album-main">
-                <div id="album-loader" class="loader"></div> 
-
                 <button id="prevBtn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
                 <img id="album-img" src="" alt="Achievement">
                 <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
@@ -87,7 +85,7 @@
     <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
     <script>
-        // 1. Welcome Bubble
+        // 1. Welcome Bubble Logic
         window.addEventListener('load', function() {
             const bubble = document.getElementById('welcome-bubble');
             if (bubble) {
@@ -98,7 +96,7 @@
             }
         });
 
-        // 2. PFP Modal
+        // 2. PFP Modal Logic (Existing)
         document.addEventListener("DOMContentLoaded", function() {
             const pfpModal = document.getElementById("pfp-modal");
             const pfpImg = document.querySelector(".pfp-container img");
@@ -112,13 +110,16 @@
                 }
             }
             if (closePfp) closePfp.onclick = () => pfpModal.style.display = "none";
+            
+            // Global click closer for PFP
             window.addEventListener("click", (e) => {
                 if (e.target == pfpModal) pfpModal.style.display = "none";
             });
         });
 
-        // 3. Portfolio Album Logic with Loader
+        // 3. Portfolio Album Logic (New)
         document.addEventListener("DOMContentLoaded", function() {
+            // EDIT YOUR ACHIEVEMENTS HERE:
             const myAchievements = [
                 { src: 'assets/cert1.jpg', desc: 'Top Performer Award - Customer Support 2024' },
                 { src: 'assets/cert2.jpg', desc: 'Content Moderator Specialist Certification' },
@@ -129,23 +130,12 @@
             const albumModal = document.getElementById("portfolio-album-modal");
             const albumImg = document.getElementById("album-img");
             const albumText = document.getElementById("album-text");
-            const loader = document.getElementById("album-loader");
             const portfolioBtn = document.querySelector('a[href="#gallery-section"]');
 
             function updateView() {
                 if(myAchievements.length > 0) {
-                    // Show loader and hide image while loading
-                    loader.style.display = "block";
-                    albumImg.style.opacity = "0";
-
                     albumImg.src = myAchievements[currentIdx].src;
                     albumText.innerText = myAchievements[currentIdx].desc;
-
-                    // Hide loader when image is ready
-                    albumImg.onload = function() {
-                        loader.style.display = "none";
-                        albumImg.style.opacity = "1";
-                    };
                 }
             }
 
@@ -171,6 +161,7 @@
 
             document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
             
+            // Close on outer click
             window.addEventListener("click", (e) => {
                 if (e.target == albumModal) albumModal.style.display = "none";
             });
