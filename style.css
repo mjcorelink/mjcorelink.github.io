@@ -905,3 +905,17 @@ h1 {
     #album-img { max-width: 100%; }
 
 }
+
+/* Enable smooth gliding when using the "Back to Top" button */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure Page 2 takes up enough room and doesn't feel cramped */
+#page-2-space {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
