@@ -21,15 +21,12 @@
             <div id="welcome-bubble" class="speech-bubble">
                 Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!           
             </div>
-            
             <div class="pfp-container">
                 <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
             </div>
             <h1>Mark John Gonzalvo</h1>
             <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
-          
-            <a href="mailto:your-email@gmail.com" class="email-btn">Email me</a>
-
+            <a href="https://mail.google.com/mail/u/1/#inbox?compose=GsNJsMDPRmbCCXxSvflMxTzBvbNLrGGXFqlqWjgSjWxKqqGZwTpRBlzjRMmHWJbmRNqSpnPFZztvsfpCXHGgzQGljKMTPCMqVmgvQQpRnwzVmwnGvTxBlfSMnTmBWjnRJqCsGCQNfnPQkhPTZthq" class="email-btn">Email me</a>
             <div class="social-icons">
                 <a href="https://www.facebook.com/mjcore"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://ph.linkedin.com/in/mark-john-gonzalvo-6384b4149"><i class="fab fa-linkedin-in"></i></a>
@@ -48,11 +45,51 @@
                 </p>
                 <div class="button-group">
                     <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
-                    <a href="javascript:void(0)" id="portfolio-trigger" class="card-btn">Portfolio</a>
+                    <a href="#gallery-section" class="card-btn">Portfolio</a>
+                    <a href="#page-2-space" class="card-btn">Skills</a>
                 </div>
             </div>
         </section>
     </div> 
+
+    <div class="container" id="page-2-space">
+        <div class="glass-panel">
+            <h2 class="main-title">WHAT I BRING TO YOUR TEAM</h2>
+            <p class="main-subtitle">I focus on efficiency, quality, and reliability.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="icon-area"><i class="fas fa-headset"></i></div>
+                    <div class="text-area">
+                        <h3>Customer Support</h3>
+                        <p>Handled chat, calls, and email support professionally.</p>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="icon-area"><i class="fas fa-user-shield"></i></div>
+                    <div class="text-area">
+                        <h3>Content Moderation</h3>
+                        <p>Experienced in reviewing and maintaining platform quality.</p>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="icon-area"><i class="fas fa-tasks"></i></div>
+                    <div class="text-area">
+                        <h3>Admin Efficiency</h3>
+                        <p>Organized, detail-oriented, and task-driven.</p>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="icon-area"><i class="fas fa-laptop-code"></i></div>
+                    <div class="text-area">
+                        <h3>Tech-Savvy</h3>
+                        <p>Comfortable with tools, systems, and AI projects.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#home-section" class="card-btn" style="margin-top: 30px;">↑ Back to Top</a>
+        </div>
+    </div>
 
     <div id="pfp-modal" class="modal">
         <span class="close-modal">&times;</span>
@@ -74,20 +111,52 @@
     </div>
 
     <script>
-        // ... (Your Chatbase config)
-        
+      window.chatbaseConfig = { chatbotId: "aWn99QuaimyS0A8WuIJVn", showFloatingInitialMessages: true, floatingInitialMessagesDelay: 3 };
+    </script>
+    <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
+
+    <script>
+        // 1. Welcome Bubble Logic
+        window.addEventListener('load', function() {
+            const bubble = document.getElementById('welcome-bubble');
+            if (bubble) {
+                setTimeout(() => {
+                    bubble.style.opacity = '0';
+                    setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
+                }, 15000); 
+            }
+        });
+
+        // 2. PFP Modal Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const pfpModal = document.getElementById("pfp-modal");
+            const pfpImg = document.querySelector(".pfp-container img");
+            const modalImg = document.getElementById("img-expanded");
+            const closePfp = document.querySelector(".close-modal");
+
+            if (pfpImg) {
+                pfpImg.onclick = function() {
+                    pfpModal.style.display = "flex";
+                    modalImg.src = this.src;
+                }
+            }
+            if (closePfp) closePfp.onclick = () => pfpModal.style.display = "none";
+            window.addEventListener("click", (e) => { if (e.target == pfpModal) pfpModal.style.display = "none"; });
+        });
+
+        // 3. Portfolio Album Logic
         document.addEventListener("DOMContentLoaded", function() {
             const myAchievements = [
-                { src: 'assets/cert1.jpg', desc: 'Awarded Top Agent for May 2025 in a Content Moderation account at Alorica' },
-                { src: 'assets/cert2.jpg', desc: 'Awarded Top Agent for June 2025 in a Content Moderation account at Alorica' },
-                { src: 'assets/cert3.jpg', desc: 'Awarded Top Agent for Q3 2017 in a Healthcare account at Concentrix' }
+                { src: 'assets/cert1.jpg', desc: 'Awarded Top Agent for May 2025...' },
+                { src: 'assets/cert2.jpg', desc: 'Awarded Top Agent for June 2025...' },
+                { src: 'assets/cert3.jpg', desc: 'Awarded Top Agent for Q3 2017...' }
             ];
 
             let currentIdx = 0;
             const albumModal = document.getElementById("portfolio-album-modal");
             const albumImg = document.getElementById("album-img");
             const albumText = document.getElementById("album-text");
-            const portfolioBtn = document.getElementById("portfolio-trigger");
+            const portfolioBtn = document.querySelector('a[href="#gallery-section"]');
 
             function updateView() {
                 if(myAchievements.length > 0) {
@@ -97,7 +166,8 @@
             }
 
             if (portfolioBtn) {
-                portfolioBtn.onclick = function() {
+                portfolioBtn.onclick = function(e) {
+                    e.preventDefault();
                     albumModal.style.display = "flex";
                     updateView();
                 }
@@ -116,7 +186,7 @@
             };
 
             document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
-            window.onclick = (e) => { if (e.target == albumModal) albumModal.style.display = "none"; };
+            window.addEventListener("click", (e) => { if (e.target == albumModal) albumModal.style.display = "none"; });
         });
     </script>
 </body>
