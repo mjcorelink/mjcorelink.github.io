@@ -22,7 +22,7 @@
                 Hi, MJ here! Welcome to my space site. Feel free to check out my AI assistant in the bottom corner if you have any questions!           
             </div>
             <div class="pfp-container">
-                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo"> 
+                <img src="assets/pfp.jpg" alt="Mark John Gonzalvo" id="pfp-trigger"> 
             </div>
             <h1>Mark John Gonzalvo</h1>
             <p class="titles">Customer Service<br>Content Moderator<br>Administrative Support<br>Freelancer</p>
@@ -45,7 +45,7 @@
                 </p>
                 <div class="button-group">
                     <a href="assets/MJ_Gonzalvo_Resume.pdf" target="_blank" class="card-btn">Resume</a>
-                    <a href="#gallery-section" class="card-btn">Portfolio</a>
+                    <a href="#gallery-section" class="card-btn" id="portfolio-btn">Portfolio</a>
                     <a href="#page-2-space" class="card-btn">Skills</a>
                 </div>
             </div>
@@ -55,8 +55,6 @@
     <div class="container" id="page-2-space">
         <div class="glass-panel">
             <h2 class="main-title">WHAT I BRING TO YOUR TEAM</h2>
-            <p class="main-subtitle">I focus on efficiency, quality, and reliability.</p>
-            
             <div class="skills-grid">
                 <div class="skill-box">
                     <div class="icon-area"><i class="fas fa-headset"></i></div>
@@ -75,15 +73,15 @@
                 <div class="skill-box">
                     <div class="icon-area"><i class="fas fa-tasks"></i></div>
                     <div class="text-area">
-                        <h3>Admin Efficiency</h3>
+                        <h3>Administrative Support</h3>
                         <p>Organized, detail-oriented, and task-driven.</p>
                     </div>
                 </div>
                 <div class="skill-box">
                     <div class="icon-area"><i class="fas fa-laptop-code"></i></div>
                     <div class="text-area">
-                        <h3>Tech-Savvy</h3>
-                        <p>Comfortable with tools, systems, and AI projects.</p>
+                        <h3>AI & Tech Projects</h3>
+                        <p>Comfortable with tools, systems, and data tasks.</p>
                     </div>
                 </div>
             </div>
@@ -101,7 +99,7 @@
         <div class="album-wrapper">
             <div class="album-main">
                 <button id="prevBtn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
-                <img id="album-img" src="" alt="Achievement">
+                <img id="album-img" src="" alt="Certificate">
                 <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="album-footer">
@@ -116,78 +114,51 @@
     <script src="https://www.chatbase.co/embed.min.js" id="aWn99QuaimyS0A8WuIJVn" defer></script>
 
     <script>
-        // 1. Welcome Bubble Logic
-        window.addEventListener('load', function() {
+        // Welcome Bubble
+        window.addEventListener('load', () => {
             const bubble = document.getElementById('welcome-bubble');
-            if (bubble) {
-                setTimeout(() => {
-                    bubble.style.opacity = '0';
-                    setTimeout(() => { bubble.style.display = 'none'; }, 1000); 
-                }, 15000); 
-            }
+            if (bubble) setTimeout(() => { bubble.style.opacity = '0'; }, 15000);
         });
 
-        // 2. PFP Modal Logic
-        document.addEventListener("DOMContentLoaded", function() {
-            const pfpModal = document.getElementById("pfp-modal");
-            const pfpImg = document.querySelector(".pfp-container img");
-            const modalImg = document.getElementById("img-expanded");
-            const closePfp = document.querySelector(".close-modal");
+        // PFP Modal
+        const pfpModal = document.getElementById("pfp-modal");
+        const pfpImg = document.getElementById("pfp-trigger");
+        const modalImg = document.getElementById("img-expanded");
+        if (pfpImg) {
+            pfpImg.onclick = function() { pfpModal.style.display = "flex"; modalImg.src = this.src; }
+        }
+        document.querySelector(".close-modal").onclick = () => pfpModal.style.display = "none";
 
-            if (pfpImg) {
-                pfpImg.onclick = function() {
-                    pfpModal.style.display = "flex";
-                    modalImg.src = this.src;
-                }
-            }
-            if (closePfp) closePfp.onclick = () => pfpModal.style.display = "none";
-            window.addEventListener("click", (e) => { if (e.target == pfpModal) pfpModal.style.display = "none"; });
-        });
+        // Portfolio Gallery
+        const myAchievements = [
+            { src: 'assets/cert1.jpg', desc: 'Awarded Top Agent for May 2025...' },
+            { src: 'assets/cert2.jpg', desc: 'Awarded Top Agent for June 2025...' },
+            { src: 'assets/cert3.jpg', desc: 'Awarded Top Agent for Q3 2017...' }
+        ];
+        let currentIdx = 0;
+        const albumModal = document.getElementById("portfolio-album-modal");
+        const albumImg = document.getElementById("album-img");
+        const albumText = document.getElementById("album-text");
 
-        // 3. Portfolio Album Logic
-        document.addEventListener("DOMContentLoaded", function() {
-            const myAchievements = [
-                { src: 'assets/cert1.jpg', desc: 'Awarded Top Agent for May 2025...' },
-                { src: 'assets/cert2.jpg', desc: 'Awarded Top Agent for June 2025...' },
-                { src: 'assets/cert3.jpg', desc: 'Awarded Top Agent for Q3 2017...' }
-            ];
+        function updateView() {
+            albumImg.src = myAchievements[currentIdx].src;
+            albumText.innerText = myAchievements[currentIdx].desc;
+        }
 
-            let currentIdx = 0;
-            const albumModal = document.getElementById("portfolio-album-modal");
-            const albumImg = document.getElementById("album-img");
-            const albumText = document.getElementById("album-text");
-            const portfolioBtn = document.querySelector('a[href="#gallery-section"]');
+        document.getElementById("portfolio-btn").onclick = function(e) {
+            e.preventDefault();
+            albumModal.style.display = "flex";
+            updateView();
+        }
 
-            function updateView() {
-                if(myAchievements.length > 0) {
-                    albumImg.src = myAchievements[currentIdx].src;
-                    albumText.innerText = myAchievements[currentIdx].desc;
-                }
-            }
+        document.getElementById("nextBtn").onclick = () => { currentIdx = (currentIdx + 1) % myAchievements.length; updateView(); };
+        document.getElementById("prevBtn").onclick = () => { currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length; updateView(); };
+        document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
 
-            if (portfolioBtn) {
-                portfolioBtn.onclick = function(e) {
-                    e.preventDefault();
-                    albumModal.style.display = "flex";
-                    updateView();
-                }
-            }
-
-            document.getElementById("nextBtn").onclick = (e) => {
-                e.stopPropagation();
-                currentIdx = (currentIdx + 1) % myAchievements.length;
-                updateView();
-            };
-
-            document.getElementById("prevBtn").onclick = (e) => {
-                e.stopPropagation();
-                currentIdx = (currentIdx - 1 + myAchievements.length) % myAchievements.length;
-                updateView();
-            };
-
-            document.getElementById("close-portfolio").onclick = () => albumModal.style.display = "none";
-            window.addEventListener("click", (e) => { if (e.target == albumModal) albumModal.style.display = "none"; });
-        });
+        window.onclick = (e) => {
+            if (e.target == pfpModal) pfpModal.style.display = "none";
+            if (e.target == albumModal) albumModal.style.display = "none";
+        };
     </script>
 </body>
 </html>
